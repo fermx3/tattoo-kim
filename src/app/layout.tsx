@@ -11,11 +11,16 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.tattookim.com.mx'),
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale?: string }>;
+};
+
+export default async function RootLayout({ children, params }: Props) {
+  const { locale } = await params;
+
   return (
-    <html suppressHydrationWarning>
+    <html lang={locale ?? 'es'} suppressHydrationWarning>
       <head>
         <link
           rel="preload"
@@ -39,7 +44,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-[#121212] text-white">{children}</body>
     </html>
   );
 }

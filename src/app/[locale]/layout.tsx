@@ -22,15 +22,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     const messages = await getMessages();
 
     return (
-        <html lang={locale}>
-            <body className="antialiased bg-[#121212] text-white">
-                <NextIntlClientProvider messages={messages}>
-                    <Header locale={locale as 'es' | 'en'} />
-                    <main>{children}</main>
-                    <Footer locale={locale as 'es' | 'en'} />
-                    <WhatsAppButton location="playa-del-carmen" variant="floating" />
-                </NextIntlClientProvider>
-            </body>
-        </html>
+        <NextIntlClientProvider messages={messages}>
+            <Header locale={locale as 'es' | 'en'} />
+            <main>{children}</main>
+            <Footer locale={locale as 'es' | 'en'} />
+            <WhatsAppButton location="playa-del-carmen" variant="floating" />
+        </NextIntlClientProvider>
     );
 }
