@@ -3,7 +3,7 @@
 > Track progress by checking boxes as tasks are completed.
 > Dependencies are noted inline with → arrows.
 
-**Última actualización:** 2026-02-22
+**Última actualización:** 2026-02-22 (Phase 4 parcialmente completada)
 
 ---
 
@@ -67,10 +67,10 @@
 
 ## Phase 4: Internationalization (i18n) 🌐
 
-- [ ] **4.1** Configure `next-intl` with App Router middleware (locale detection, redirect)
-- [ ] **4.2** Create translation files: `messages/es.json` and `messages/en.json` with all UI strings
-- [ ] **4.3** Configure localized pathnames mapping (ES ↔ EN route segments)
-- [ ] **4.4** Implement language switcher component that preserves current page context
+- [x] **4.1** Configure `next-intl` with App Router middleware (locale detection, redirect) — `src/proxy.ts` + `src/i18n.ts` + `src/i18n/routing.ts`
+- [x] **4.2** Create translation files: `messages/es.json` and `messages/en.json` with all UI strings — nav, hero, footer y WhatsApp strings
+- [x] **4.3** Configure localized pathnames mapping (ES ↔ EN route segments) — definido en `src/i18n/routing.ts`
+- [x] **4.4** Implement language switcher component that preserves current page context — `LanguageSwitcher.tsx` con `usePathname` + `useRouter` de next-intl
 - [ ] **4.5** Build "translation not available" fallback page
 - [ ] **4.6** Test middleware: root `/` redirects to `/es`, `Accept-Language: en` redirects to `/en`
 - [ ] **4.7** Verify `hreflang` alternate links render correctly on all pages → *depends on 7.3*
