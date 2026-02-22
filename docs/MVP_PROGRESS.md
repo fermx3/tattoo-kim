@@ -3,7 +3,7 @@
 > Track progress by checking boxes as tasks are completed.
 > Dependencies are noted inline with → arrows.
 
-**Última actualización:** 2026-02-22 (Phase 4 parcialmente completada)
+**Última actualización:** 2026-02-22 (Phase 4 completada)
 
 ---
 
@@ -71,8 +71,8 @@
 - [x] **4.2** Create translation files: `messages/es.json` and `messages/en.json` with all UI strings — nav, hero, footer y WhatsApp strings
 - [x] **4.3** Configure localized pathnames mapping (ES ↔ EN route segments) — definido en `src/i18n/routing.ts`
 - [x] **4.4** Implement language switcher component that preserves current page context — `LanguageSwitcher.tsx` con `usePathname` + `useRouter` de next-intl
-- [ ] **4.5** Build "translation not available" fallback page
-- [ ] **4.6** Test middleware: root `/` redirects to `/es`, `Accept-Language: en` redirects to `/en`
+- [x] **4.5** Build "translation not available" fallback page — `src/app/[locale]/not-available/page.tsx` con soporte `?originalUrl=`
+- [x] **4.6** Test middleware: root `/` redirects to `/es`, `Accept-Language: en` redirects to `/en` — verificado con `curl` (HTTP 301)
 - [ ] **4.7** Verify `hreflang` alternate links render correctly on all pages → *depends on 7.3*
 
 ---
