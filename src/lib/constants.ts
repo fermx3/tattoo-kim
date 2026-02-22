@@ -8,7 +8,7 @@ export const WHATSAPP_NUMBERS = {
 } as const;
 
 // ─── Social ──────────────────────────────────────────────────────────────────
-export const INSTAGRAM_URL = 'https://instagram.com/tattookim_studio'; // TODO: confirm handle
+export const INSTAGRAM_URL = 'https://www.instagram.com/tattoo_kim/';
 
 // ─── Site ────────────────────────────────────────────────────────────────────
 export const SITE_NAME = 'Tattoo Kim';
