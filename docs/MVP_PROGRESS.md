@@ -3,7 +3,7 @@
 > Track progress by checking boxes as tasks are completed.
 > Dependencies are noted inline with → arrows.
 
-**Última actualización:** 2026-02-22 (Phase 4 completada)
+**Última actualización:** 2026-02-22 (Phase 5.1–5.6 en progreso)
 
 ---
 
@@ -79,13 +79,13 @@
 
 ## Phase 5: Pages & Sections 📄
 
-- [ ] **5.1** Build Homepage — hero section, services overview, featured artists, location cards, CTA → *depends on 3.x, 4.x*
-- [ ] **5.2** Build Tattoo service page — description, gallery preview, WhatsApp CTA
-- [ ] **5.3** Build Piercing service page — description, gallery preview, WhatsApp CTA
-- [ ] **5.4** Build Playa del Carmen location page — address, hours, map embed, WhatsApp CTA → *depends on 1.8, 1.9*
-- [ ] **5.5** Build Cancún location page — address, hours, map embed, WhatsApp CTA → *depends on 1.8, 1.9*
-- [ ] **5.6** Build Contact page — WhatsApp CTA for both locations, no form
-- [ ] **5.7** Translate all page copy to English → *depends on 5.1–5.6*
+- [x] **5.1** Build Homepage — hero section, services overview, featured artists, location cards, CTA → *completado*
+- [x] **5.2** Build Tattoo service page — styles grid, 4-step process, WhatsApp CTA
+- [x] **5.3** Build Piercing service page — types grid, materials/safety section, WhatsApp CTA
+- [x] **5.4** Build Playa del Carmen location page — hours, address, map link, WhatsApp CTA
+- [x] **5.5** Build Cancún location page — same dynamic route `ubicaciones/[slug]`
+- [x] **5.6** Build Contact page — both studio cards, WhatsApp CTA per studio, Instagram link
+- [ ] **5.7** Translate all page copy to English → *next-intl routes ready, translations done*
 
 ---
 

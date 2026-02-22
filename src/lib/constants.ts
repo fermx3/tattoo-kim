@@ -22,7 +22,7 @@ export const LOCATIONS: StudioLocation[] = [
         name: 'Playa del Carmen',
         address: 'Av 30 Esquina Calle 72, Colonia Gonzalo Guerrero, Playa del Carmen, Q.R.',
         phone: WHATSAPP_NUMBERS['playa-del-carmen'],
-        mapUrl: 'https://maps.google.com/?q=Av+30+Calle+72+Playa+del+Carmen', // TODO: confirm coordinates
+        mapUrl: 'https://maps.app.goo.gl/Jptg6VLaGabGqM7a8',
         hours: {
             weekdays: '11:00 - 20:00',
             saturday: '10:00 - 18:00',
@@ -38,7 +38,7 @@ export const LOCATIONS: StudioLocation[] = [
         name: 'Cancún',
         address: 'Av. Tulúm 232, SMZ 4, 77500 Cancún, Q.R.',
         phone: WHATSAPP_NUMBERS.cancun,
-        mapUrl: 'https://maps.google.com/?q=Cancun', // TODO: confirm
+        mapUrl: 'https://maps.app.goo.gl/EpnExGCyz9RiJgBK9', // TODO: confirm
         hours: {
             weekdays: 'TODO',
             saturday: 'TODO',
