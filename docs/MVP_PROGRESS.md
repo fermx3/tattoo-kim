@@ -42,11 +42,11 @@
 - [x] **2.3** Install Tailwind CSS v4 + PostCSS — custom dark theme pendiente de configurar en `tailwind.config.ts`
 - [x] **2.4** Set up ESLint with `eslint-config-next` (core-web-vitals + typescript)
 - [x] **2.5** Initialize Git repository with `.gitignore`
-- [ ] **2.6** Create folder structure per CLAUDE.md specification (`components/`, `lib/`, `styles/`, `types/`, `content/`, `messages/`)
-- [ ] **2.7** Self-host fonts (Inter WOFF2) and configure in Tailwind → *depends on 1.1*
-- [ ] **2.8** Set up `next.config.ts` (image domains, MDX support, i18n config) — archivo existe pero vacío
-- [ ] **2.9** Install core dependencies: `next-intl`, `@next/mdx`, `gray-matter`, `next-sitemap`
-- [ ] **2.10** Create constants file with WhatsApp numbers, addresses, social links → *depends on 1.2, 1.9*
+- [x] **2.6** Create folder structure per CLAUDE.md specification (`components/ui,layout,sections,blog,artists,whatsapp`, `lib/`, `styles/`, `types/`, `content/blog,artists`, `messages/`)
+- [x] **2.7** Self-host fonts (Inter WOFF2) — `public/fonts/` con 3 pesos (400/500/700), `@font-face` en `src/styles/globals.css`
+- [x] **2.8** Set up `next.config.ts` — MDX support (`@next/mdx`), image optimization (webp/avif), TypeScript strict
+- [x] **2.9** Install core dependencies: `next-intl`, `@next/mdx`, `gray-matter`, `next-sitemap`, `@mdx-js/loader`, `@mdx-js/react`
+- [x] **2.10** Create constants file with WhatsApp numbers (placeholder), addresses, social links — `src/lib/constants.ts` creado (rellenar con datos reales cuando estén disponibles)
 
 ---
 
