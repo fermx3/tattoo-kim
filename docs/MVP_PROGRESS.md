@@ -52,16 +52,16 @@
 
 ## Phase 3: Core Architecture 🏗️
 
-- [ ] **3.1** Build root layout (`src/app/layout.tsx`) — HTML structure, font loading, global CSS
-- [ ] **3.2** Build locale layout (`src/app/[locale]/layout.tsx`) — wraps content in i18n provider → *depends on 4.1*
-- [ ] **3.3** Create Header component with navigation and language switcher → *depends on 4.2*
-- [ ] **3.4** Create Footer component with location info, social links, WhatsApp CTA
-- [ ] **3.5** Create WhatsApp floating button component
-- [ ] **3.6** Build WhatsApp URL utility (`src/lib/whatsapp.ts`) with pre-filled messages per context
-- [ ] **3.7** Define shared TypeScript types (`src/types/index.ts`) — Blog post, Artist, Location
-- [ ] **3.8** Build mobile navigation (hamburger menu, slide-out) → *depends on 3.3*
-- [ ] **3.9** Create reusable CTA button component (links to WhatsApp)
-- [ ] **3.10** Implement 404 not-found pages (global and per-locale)
+- [x] **3.1** Build root layout (`src/app/layout.tsx`) — Inter self-hosted preload, remove Geist/Google Fonts, metadata base
+- [x] **3.2** Build locale layout (`src/app/[locale]/layout.tsx`) — NextIntlClientProvider, Header, Footer, WhatsApp floating
+- [x] **3.3** Create Header component with navigation and language switcher
+- [x] **3.4** Create Footer component with location info, social links, WhatsApp CTA
+- [x] **3.5** Create WhatsApp floating button component (`floating` + `inline` variants)
+- [x] **3.6** Build WhatsApp URL utility (`src/lib/whatsapp.ts`) with pre-filled messages per context
+- [x] **3.7** Define shared TypeScript types (`src/types/index.ts`) — BlogPost, Artist, StudioLocation
+- [x] **3.8** Build mobile navigation (hamburger menu, fullscreen overlay) — `MobileNav.tsx`
+- [x] **3.9** Create reusable CTA button component — `CTAButton.tsx` (primary/secondary, sm/md/lg)
+- [x] **3.10** Implement 404 pages — global `not-found.tsx` + locale-aware `[locale]/not-found.tsx`
 
 ---
 
