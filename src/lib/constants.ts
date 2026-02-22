@@ -36,7 +36,7 @@ export const LOCATIONS: StudioLocation[] = [
     {
         slug: 'cancun',
         name: 'Cancún',
-        address: 'TODO: Agregar dirección de Cancún',
+        address: 'Av. Tulúm 232, SMZ 4, 77500 Cancún, Q.R.',
         phone: WHATSAPP_NUMBERS.cancun,
         mapUrl: 'https://maps.google.com/?q=Cancun', // TODO: confirm
         hours: {
