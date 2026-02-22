@@ -1,0 +1,43 @@
+{
+    "nav": {
+        "home": "Inicio",
+        "services": "Servicios",
+        "tattoos": "Tatuajes",
+        "piercings": "Piercings",
+        "artists": "Artistas",
+        "locations": "Ubicaciones",
+        "blog": "Blog",
+        "contact": "Contacto"
+    },
+    "home": {
+        "hero_title": "Kim Tattoo: Arte en la Piel",
+        "hero_subtitle": "Estudio profesional de tatuajes en el corazón de Playa del Carmen. Transformamos tus historias en piezas eternas de arte.",
+        "hero_cta": "Agenda tu Cita",
+        "hero_secondary_cta": "Ver Galería"
+    },
+    "common": {
+        "whatsapp_cta": "Agenda tu Cita",
+        "read_more": "Leer más",
+        "view_all": "Ver todos",
+        "back": "Volver",
+        "location_playa": "Playa del Carmen",
+        "location_cancun": "Cancún"
+    },
+    "footer": {
+        "tagline": "Más que un estudio, una experiencia artística dedicada a la expresión personal y la excelencia técnica.",
+        "schedule": "Horario",
+        "location": "Ubicación",
+        "rights": "Todos los derechos reservados."
+    },
+    "not_found": {
+        "title": "Página no encontrada",
+        "message": "La página que buscas no existe.",
+        "back_home": "Volver al inicio"
+    },
+    "translation_unavailable": {
+        "title": "Traducción no disponible",
+        "message": "Este contenido aún no está disponible en español.",
+        "read_original": "Leer en inglés",
+        "back_to_blog": "Ver todos los artículos"
+    }
+}

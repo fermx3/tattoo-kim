@@ -1,0 +1,43 @@
+{
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "tattoos": "Tattoos",
+        "piercings": "Piercings",
+        "artists": "Artists",
+        "locations": "Locations",
+        "blog": "Blog",
+        "contact": "Contact"
+    },
+    "home": {
+        "hero_title": "Kim Tattoo: Art on Skin",
+        "hero_subtitle": "Professional tattoo studio in the heart of Playa del Carmen. We transform your stories into eternal works of art.",
+        "hero_cta": "Book Your Appointment",
+        "hero_secondary_cta": "View Gallery"
+    },
+    "common": {
+        "whatsapp_cta": "Book Your Appointment",
+        "read_more": "Read more",
+        "view_all": "View all",
+        "back": "Back",
+        "location_playa": "Playa del Carmen",
+        "location_cancun": "Cancún"
+    },
+    "footer": {
+        "tagline": "More than a studio, an artistic experience dedicated to personal expression and technical excellence.",
+        "schedule": "Hours",
+        "location": "Location",
+        "rights": "All rights reserved."
+    },
+    "not_found": {
+        "title": "Page not found",
+        "message": "The page you are looking for does not exist.",
+        "back_home": "Back to home"
+    },
+    "translation_unavailable": {
+        "title": "Translation unavailable",
+        "message": "This content is not yet available in English.",
+        "read_original": "Read in Spanish",
+        "back_to_blog": "View all articles"
+    }
+}
