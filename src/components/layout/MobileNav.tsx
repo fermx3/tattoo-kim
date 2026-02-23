@@ -20,6 +20,57 @@ export default function MobileNav({ links, locale }: MobileNavProps) {
         return () => { document.body.style.overflow = ''; };
     }, [open]);
 
+    // The single toggle button — always floats above everything via inline z-index
+    const toggleButton = (
+        <button
+            id="mobile-menu-button"
+            aria-label={open
+                ? (locale === 'es' ? 'Cerrar menú' : 'Close menu')
+                : (locale === 'es' ? 'Abrir menú' : 'Open menu')}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+            className="md:hidden fixed flex items-center justify-center w-11 h-11 rounded-full"
+            style={{
+                // Matches header px-8 (32px) and h-20 center (80px / 2 - 22px = 18px)
+                top: 18,
+                right: 20,
+                zIndex: 99999,
+                background: open ? 'rgba(20,184,166,0.12)' : 'transparent',
+                border: open ? '1px solid rgba(20,184,166,0.3)' : '1px solid transparent',
+                transition: 'background 250ms ease, border-color 250ms ease',
+            }}
+        >
+            <span className="relative w-5 h-[14px] flex flex-col justify-between">
+                {/* Top bar: straight or top-arm of X */}
+                <span
+                    className="block w-full h-[2px] bg-white origin-center"
+                    style={{
+                        transition: 'transform 300ms cubic-bezier(0.4,0,0.2,1)',
+                        transform: open ? 'translateY(6px) rotate(45deg)' : 'none',
+                    }}
+                />
+                {/* Middle bar: fades out */}
+                <span
+                    className="block w-full h-[2px] bg-white"
+                    style={{
+                        transition: 'opacity 200ms ease, transform 300ms ease',
+                        opacity: open ? 0 : 1,
+                        transform: open ? 'scaleX(0)' : 'none',
+                    }}
+                />
+                {/* Bottom bar: straight or bottom-arm of X */}
+                <span
+                    className="block w-full h-[2px] bg-white origin-center"
+                    style={{
+                        transition: 'transform 300ms cubic-bezier(0.4,0,0.2,1)',
+                        transform: open ? 'translateY(-6px) rotate(-45deg)' : 'none',
+                    }}
+                />
+            </span>
+        </button>
+    );
+
     const overlay = open && (
         <div
             id="mobile-menu"
@@ -29,20 +80,7 @@ export default function MobileNav({ links, locale }: MobileNavProps) {
             className="fixed inset-0 flex flex-col px-8 overflow-y-auto"
             style={{ backgroundColor: '#080d0c', zIndex: 9999 }}
         >
-            {/* Close button — inside portal, always on top */}
-            <button
-                aria-label={locale === 'es' ? 'Cerrar menú' : 'Close menu'}
-                onClick={() => setOpen(false)}
-                className="fixed top-5 right-5 flex items-center justify-center w-10 h-10 rounded-full"
-                style={{ zIndex: 10001, color: '#ffffff', background: 'rgba(255,255,255,0.08)' }}
-            >
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="1" y1="1" x2="17" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    <line x1="17" y1="1" x2="1" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-            </button>
-
-            {/* Ambient glow */}
+            {/* Ambient glow top-right */}
             <div
                 aria-hidden="true"
                 className="pointer-events-none fixed top-0 right-0"
@@ -108,25 +146,13 @@ export default function MobileNav({ links, locale }: MobileNavProps) {
 
     return (
         <>
-            {/* Hamburger — stays in header */}
-            <button
-                id="mobile-menu-button"
-                aria-label={locale === 'es' ? 'Abrir menú' : 'Open menu'}
-                aria-expanded={open}
-                aria-controls="mobile-menu"
-                onClick={() => setOpen((v) => !v)}
-                className="md:hidden relative flex flex-col gap-[5px] p-2"
-                style={{ zIndex: 99999 }}
-            >
-                <span className="block w-6 h-[2px] bg-white transition-all duration-300 origin-center"
-                    style={{ transform: open ? 'translateY(7px) rotate(45deg)' : 'none' }} />
-                <span className="block w-6 h-[2px] bg-white transition-all duration-300"
-                    style={{ opacity: open ? 0 : 1 }} />
-                <span className="block w-6 h-[2px] bg-white transition-all duration-300 origin-center"
-                    style={{ transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
-            </button>
+            {/* Spacer in header flow — keeps LanguageSwitcher from shifting right */}
+            <div className="md:hidden w-11 h-11 shrink-0" aria-hidden="true" />
 
-            {/* Overlay rendered at body level via portal — escapes header stacking context */}
+            {/* Toggle button rendered in portal so it's always above overlay */}
+            {mounted && createPortal(toggleButton, document.body)}
+
+            {/* Overlay in portal */}
             {mounted && createPortal(overlay, document.body)}
         </>
     );
