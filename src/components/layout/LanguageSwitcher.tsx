@@ -18,24 +18,24 @@ export default function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
     }
 
     return (
-        <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest">
+        <div className="flex items-center text-[10px] font-black uppercase tracking-widest">
             <button
                 onClick={() => switchLocale('es')}
                 aria-label="Cambiar idioma a Español"
-                className={`transition-colors ${locale === 'es'
-                        ? 'text-[#14b8a6]'
-                        : 'text-slate-500 hover:text-slate-300'
+                className={`px-3 py-3 transition-colors ${locale === 'es'
+                    ? 'text-[#14b8a6]'
+                    : 'text-slate-500 hover:text-slate-300'
                     }`}
             >
                 ES
             </button>
-            <span className="text-slate-700">|</span>
+            <span className="text-slate-700 select-none">|</span>
             <button
                 onClick={() => switchLocale('en')}
                 aria-label="Switch language to English"
-                className={`transition-colors ${locale === 'en'
-                        ? 'text-[#14b8a6]'
-                        : 'text-slate-500 hover:text-slate-300'
+                className={`px-3 py-3 transition-colors ${locale === 'en'
+                    ? 'text-[#14b8a6]'
+                    : 'text-slate-500 hover:text-slate-300'
                     }`}
             >
                 EN
