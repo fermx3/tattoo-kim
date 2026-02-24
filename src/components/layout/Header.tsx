@@ -54,15 +54,18 @@ export default function Header({ locale }: HeaderProps) {
 
                 {/* Desktop nav */}
                 <div className="hidden md:flex items-center gap-10">
-                    {links.map(({ href, label }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            className="text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#14b8a6] transition-colors font-black"
-                        >
-                            {label}
-                        </Link>
-                    ))}
+                    {links.map(({ href, label }, i) => {
+                        const NavLink = i === 0 ? HomeLink : Link;
+                        return (
+                            <NavLink
+                                key={href}
+                                href={href}
+                                className="text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#14b8a6] transition-colors font-black"
+                            >
+                                {label}
+                            </NavLink>
+                        );
+                    })}
                 </div>
 
                 {/* Right side: Language switcher + CTA + Mobile trigger */}
