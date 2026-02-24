@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import HomeLink from '@/components/ui/HomeLink';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileNav from './MobileNav';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
@@ -38,7 +39,7 @@ export default function Header({ locale }: HeaderProps) {
                 aria-label="Main navigation"
             >
                 {/* Logo */}
-                <Link
+                <HomeLink
                     href={`/${locale}`}
                     className="flex items-center gap-3 group"
                     aria-label="Kim Tattoo — Inicio"
@@ -49,7 +50,7 @@ export default function Header({ locale }: HeaderProps) {
                     <span className="text-lg font-black tracking-tighter text-white uppercase">
                         Kim Tattoo
                     </span>
-                </Link>
+                </HomeLink>
 
                 {/* Desktop nav */}
                 <div className="hidden md:flex items-center gap-10">

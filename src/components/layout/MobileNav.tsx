@@ -111,7 +111,13 @@ export default function MobileNav({ links, locale }: MobileNavProps) {
                         >
                             <Link
                                 href={href}
-                                onClick={() => setOpen(false)}
+                                onClick={() => {
+                                    setOpen(false);
+                                    // First link is always "Inicio/Home" — scroll to top
+                                    if (i === 0) {
+                                        setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+                                    }
+                                }}
                                 className="group flex items-center gap-5 py-5 w-full"
                             >
                                 <span
