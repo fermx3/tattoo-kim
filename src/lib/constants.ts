@@ -3,8 +3,8 @@ import type { StudioLocation } from '@/types';
 // ─── WhatsApp ────────────────────────────────────────────────────────────────
 // TODO: Replace with real phone numbers (international format, no spaces or dashes)
 export const WHATSAPP_NUMBERS = {
-    'playa-del-carmen': '521XXXXXXXXXX', // +52 1 XXX XXX XXXX
-    cancun: '521XXXXXXXXXX',             // +52 1 XXX XXX XXXX
+    'playa-del-carmen': '529842809885', // +52 984 280 9885
+    cancun: '529841447501',            // +52 984 144 7501
 } as const;
 
 // ─── Social ──────────────────────────────────────────────────────────────────
@@ -24,9 +24,9 @@ export const LOCATIONS: StudioLocation[] = [
         phone: WHATSAPP_NUMBERS['playa-del-carmen'],
         mapUrl: 'https://maps.app.goo.gl/Jptg6VLaGabGqM7a8',
         hours: {
-            weekdays: '11:00 - 20:00',
-            saturday: '10:00 - 18:00',
-            sunday: 'Cerrado',
+            weekdays: '11:00 - 22:00',
+            saturday: '11:00 - 22:00',
+            sunday: '11:00 - 22:00',
         },
         coords: {
             lat: 20.6296, // TODO: confirm
@@ -40,9 +40,9 @@ export const LOCATIONS: StudioLocation[] = [
         phone: WHATSAPP_NUMBERS.cancun,
         mapUrl: 'https://maps.app.goo.gl/EpnExGCyz9RiJgBK9', // TODO: confirm
         hours: {
-            weekdays: 'TODO',
-            saturday: 'TODO',
-            sunday: 'TODO',
+            weekdays: '11:00 - 22:00',
+            saturday: '11:00 - 22:00',
+            sunday: '11:00 - 22:00',
         },
         coords: {
             lat: 21.1619, // TODO: confirm

@@ -10,25 +10,19 @@ const content = {
         tagline:
             'Más que un estudio, una experiencia artística dedicada a la expresión personal y la excelencia técnica.',
         schedule: 'Horario',
-        location: 'Ubicación',
-        weekdays: 'Lun – Vie:',
-        saturday: 'Sábado:',
-        sunday: 'Domingo:',
+        location: 'Ubicaciones',
+        allWeek: 'Lun – Dom:',
         rights: '© 2025 Kim Tattoo Studio. Todos los derechos reservados.',
     },
     en: {
         tagline:
             'More than a studio, an artistic experience dedicated to personal expression and technical excellence.',
         schedule: 'Hours',
-        location: 'Location',
-        weekdays: 'Mon – Fri:',
-        saturday: 'Saturday:',
-        sunday: 'Sunday:',
+        location: 'Locations',
+        allWeek: 'Mon – Sun:',
         rights: '© 2025 Kim Tattoo Studio. All rights reserved.',
     },
 };
-
-const closedLabel = { es: 'Cerrado', en: 'Closed' };
 
 export default function Footer({ locale }: FooterProps) {
     const t = content[locale];
@@ -65,35 +59,32 @@ export default function Footer({ locale }: FooterProps) {
                         <ul className="text-slate-500 font-light text-sm space-y-3">
                             <li>
                                 <span className="text-white font-medium inline-block w-28">
-                                    {t.weekdays}
+                                    {t.allWeek}
                                 </span>
                                 {pdcLocation.hours.weekdays}
-                            </li>
-                            <li>
-                                <span className="text-white font-medium inline-block w-28">
-                                    {t.saturday}
-                                </span>
-                                {pdcLocation.hours.saturday}
-                            </li>
-                            <li>
-                                <span className="text-white font-medium inline-block w-28">
-                                    {t.sunday}
-                                </span>
-                                {closedLabel[locale]}
                             </li>
                         </ul>
                     </div>
 
-                    {/* Location */}
+                    {/* Locations */}
                     <div>
                         <h5 className="text-white font-black mb-6 uppercase tracking-[0.2em] text-[10px]">
                             {t.location}
                         </h5>
-                        <p className="text-slate-500 font-light text-sm leading-loose">
-                            Av 30 Esquina Calle 72<br />
-                            Colonia Gonzalo Guerrero<br />
-                            Playa del Carmen, Q.R.
-                        </p>
+                        <ul className="text-slate-500 font-light text-sm space-y-4">
+                            <li>
+                                <p className="text-white font-medium mb-1">Playa del Carmen</p>
+                                <a href="tel:529842809885" className="hover:text-[#14b8a6] transition-colors">
+                                    +52 984 280 9885
+                                </a>
+                            </li>
+                            <li>
+                                <p className="text-white font-medium mb-1">Cancún</p>
+                                <a href="tel:529841447501" className="hover:text-[#14b8a6] transition-colors">
+                                    +52 984 144 7501
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 

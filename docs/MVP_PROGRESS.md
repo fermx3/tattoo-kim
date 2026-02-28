@@ -3,7 +3,7 @@
 > Track progress by checking boxes as tasks are completed.
 > Dependencies are noted inline with → arrows.
 
-**Última actualización:** 2026-02-22 (Phase 5.1–5.6 en progreso)
+**Última actualización:** 2026-02-23 (Phase 5 completa + UX fixes navegación mobile)
 
 ---
 
@@ -59,7 +59,7 @@
 - [x] **3.5** Create WhatsApp floating button component (`floating` + `inline` variants)
 - [x] **3.6** Build WhatsApp URL utility (`src/lib/whatsapp.ts`) with pre-filled messages per context
 - [x] **3.7** Define shared TypeScript types (`src/types/index.ts`) — BlogPost, Artist, StudioLocation
-- [x] **3.8** Build mobile navigation (hamburger menu, fullscreen overlay) — `MobileNav.tsx`
+- [x] **3.8** Build mobile navigation — `MobileNav.tsx` rediseñado con React Portal (`createPortal`) para escapar stacking context del header; un solo botón toggle ≡↔× flotante en z-99999; overlay sólido en z-9999
 - [x] **3.9** Create reusable CTA button component — `CTAButton.tsx` (primary/secondary, sm/md/lg)
 - [x] **3.10** Implement 404 pages — global `not-found.tsx` + locale-aware `[locale]/not-found.tsx`
 
@@ -85,7 +85,20 @@
 - [x] **5.4** Build Playa del Carmen location page — hours, address, map link, WhatsApp CTA
 - [x] **5.5** Build Cancún location page — same dynamic route `ubicaciones/[slug]`
 - [x] **5.6** Build Contact page — both studio cards, WhatsApp CTA per studio, Instagram link
-- [ ] **5.7** Translate all page copy to English → *next-intl routes ready, translations done*
+- [x] **5.7** Translate all page copy to English → i18n completado (ES + EN) para todos los namespaces de servicios, ubicaciones y contacto
+
+---
+
+## UX Fixes — Navegación 🛠️
+
+> Mejoras de UX aplicadas el 2026-02-23 durante QA móvil.
+
+- [x] **UX-1** Menú móvil rediseñado con `createPortal` — escapa el stacking context del `<header z-50>` para pintar sobre todo el contenido de la página
+- [x] **UX-2** Botón toggle ≡↔× unificado — único botón `position: fixed; z-index: 99999` que actúa como hamburguesa (cerrado) y como × (abierto); elimina botón de cierre redundante
+- [x] **UX-3** Fondo del overlay siempre opaco — se usa `visibility` (no `opacity`) en el contenedor para que el `background-color` no se transparente durante transiciones
+- [x] **UX-4** Placeholder `div 44×44px` en header — reserva el espacio del botón flotante en el flex del header para que el `LanguageSwitcher` no se desplace
+- [x] **UX-5** `LanguageSwitcher` touch target mejorado — `px-3 py-3` en cada botón para área táctil ≥ 44px recomendada por Apple/Google
+- [x] **UX-6** Logo y link "Inicio" hacen scroll-to-top — `HomeLink` client component detecta si el usuario ya está en la homepage y hace `window.scrollTo({ top:0, behavior:'smooth' })` en lugar de no hacer nada; aplica en desktop y móvil
 
 ---
 
