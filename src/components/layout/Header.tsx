@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import HomeLink from '@/components/ui/HomeLink';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -35,21 +36,23 @@ export default function Header({ locale }: HeaderProps) {
     return (
         <header className="fixed top-0 w-full z-50 bg-[#121212]/90 backdrop-blur-xl border-b border-white/5">
             <nav
-                className="max-w-[1920px] mx-auto px-8 h-20 flex items-center justify-between"
+                className="max-w-[1920px] mx-auto px-8 h-20 md:h-28 flex items-center justify-between"
                 aria-label="Main navigation"
             >
                 {/* Logo */}
                 <HomeLink
                     href={`/${locale}`}
-                    className="flex items-center gap-3 group"
+                    className="shrink-0"
                     aria-label="Kim Tattoo — Inicio"
                 >
-                    <div className="size-9 bg-[#134e4a] rounded flex items-center justify-center ring-1 ring-white/10 shrink-0">
-                        <span className="text-[10px] font-black text-white">KT</span>
-                    </div>
-                    <span className="text-lg font-black tracking-tighter text-white uppercase">
-                        Kim Tattoo
-                    </span>
+                    <Image
+                        src="/images/logo-white.svg"
+                        alt="Kim Tattoo"
+                        width={160}
+                        height={56}
+                        className="h-10 md:h-14 w-auto"
+                        priority
+                    />
                 </HomeLink>
 
                 {/* Desktop nav */}
