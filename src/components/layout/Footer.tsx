@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { LOCATIONS, INSTAGRAM_URL } from '@/lib/constants';
 
@@ -36,15 +37,16 @@ export default function Footer({ locale }: FooterProps) {
                     <div className="md:col-span-2">
                         <Link
                             href={`/${locale}`}
-                            className="flex items-center gap-3 mb-8 group w-fit"
+                            className="mb-8 block w-fit"
                             aria-label="Kim Tattoo"
                         >
-                            <div className="size-8 bg-[#134e4a] rounded flex items-center justify-center ring-1 ring-white/10">
-                                <span className="text-[10px] font-black text-white">KT</span>
-                            </div>
-                            <span className="text-xl font-black text-white uppercase tracking-tighter">
-                                Kim Tattoo
-                            </span>
+                            <Image
+                                src="/images/icon-white.svg"
+                                alt="Kim Tattoo"
+                                width={64}
+                                height={64}
+                                className="size-16"
+                            />
                         </Link>
                         <p className="text-slate-500 font-light max-w-sm text-base leading-relaxed">
                             {t.tagline}
