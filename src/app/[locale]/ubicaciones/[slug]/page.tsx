@@ -36,10 +36,15 @@ export default async function LocationPage({ params }: Props) {
     const otherLocation = LOCATIONS.find((l) => l.slug !== slug)!;
 
     const hours = [
-        { label: t('weekdays'), value: location.hours.weekdays },
-        { label: t('saturday'), value: location.hours.saturday },
-        { label: t('sunday'), value: location.hours.sunday },
+        { key: 'weekdays', label: t('weekdays'), value: location.hours.weekdays },
+        { key: 'saturday', label: t('saturday'), value: location.hours.saturday },
+        { key: 'sunday', label: t('sunday'), value: location.hours.sunday },
     ];
+
+    // Deduplicate rows with identical label + value
+    const uniqueHours = hours.filter(
+        (h, i, arr) => arr.findIndex((x) => x.label === h.label && x.value === h.value) === i
+    );
 
     return (
         <main className="min-h-screen bg-[#121212]">
@@ -60,9 +65,9 @@ export default async function LocationPage({ params }: Props) {
                             {t('hours_title')}
                         </h2>
                         <div className="space-y-4">
-                            {hours.map(({ label, value }) => (
+                            {uniqueHours.map(({ key, label, value }) => (
                                 <div
-                                    key={label}
+                                    key={key}
                                     className="flex items-center justify-between border-b border-white/5 pb-4"
                                 >
                                     <span className="text-sm text-slate-400 font-medium">{label}</span>
