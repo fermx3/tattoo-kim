@@ -159,5 +159,18 @@
         "instagram_cta": "Follow Us on Instagram",
         "whatsapp_cta": "Message on WhatsApp",
         "hours_label": "Hours"
+    },
+    "blog": {
+        "label": "Blog",
+        "title": "Tips & Guides",
+        "desc": "Learn everything about tattoo and piercing aftercare, tips from our artists, and studio news.",
+        "read_more": "Read article",
+        "back_to_blog": "Back to Blog",
+        "published_on": "Published on",
+        "by": "by",
+        "whatsapp_cta_title": "Questions about your aftercare?",
+        "whatsapp_cta_desc": "Message us on WhatsApp and we'll help you out — no commitment needed.",
+        "whatsapp_cta_button": "Contact Us",
+        "no_posts": "Coming soon..."
     }
 }

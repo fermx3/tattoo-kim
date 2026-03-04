@@ -159,5 +159,18 @@
         "instagram_cta": "Síguenos en Instagram",
         "whatsapp_cta": "Escribir por WhatsApp",
         "hours_label": "Horario"
+    },
+    "blog": {
+        "label": "Blog",
+        "title": "Consejos & Guías",
+        "desc": "Aprende todo sobre el cuidado de tu tatuaje o piercing, consejos de nuestros artistas y novedades del estudio.",
+        "read_more": "Leer artículo",
+        "back_to_blog": "Volver al Blog",
+        "published_on": "Publicado el",
+        "by": "por",
+        "whatsapp_cta_title": "¿Tienes dudas sobre tu cuidado?",
+        "whatsapp_cta_desc": "Escríbenos por WhatsApp y te ayudamos sin compromiso.",
+        "whatsapp_cta_button": "Contáctanos",
+        "no_posts": "Próximamente..."
     }
 }
