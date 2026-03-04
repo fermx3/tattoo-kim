@@ -62,6 +62,7 @@ body {
 /* ─── Tailwind v4 ─────────────────────────────────────────────────────────── */
 
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 /* ─── Selection color ─────────────────────────────────────────────────────── */
 
