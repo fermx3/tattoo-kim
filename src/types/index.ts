@@ -28,6 +28,28 @@ export interface Artist {
   content?: string;
 }
 
+export interface GoogleReviewData {
+  author: string;
+  rating: number;
+  text: string;
+  date: string;
+  profileUrl?: string;
+}
+
+export interface GoogleLocationRating {
+  location: 'playa-del-carmen' | 'cancun';
+  score: number;
+  totalReviews: number;
+  reviews: GoogleReviewData[];
+  profileUrl: string;
+}
+
+export interface CombinedGoogleRating {
+  score: number;
+  totalReviews: number;
+  reviews: GoogleReviewData[];
+}
+
 export interface StudioLocation {
   slug: 'playa-del-carmen' | 'cancun';
   name: string;

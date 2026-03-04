@@ -1,9 +1,15 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import CTAButton from '@/components/ui/CTAButton';
+import GoogleRatingBadge from '@/components/ui/GoogleRatingBadge';
+import type { CombinedGoogleRating } from '@/types';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+    googleRating: CombinedGoogleRating;
+    profileUrl: string;
+}
+
+export default function HeroSection({ googleRating, profileUrl }: HeroSectionProps) {
     const t = useTranslations('home');
 
     return (
@@ -39,9 +45,14 @@ export default function HeroSection() {
                     <div className="w-16 h-[2px] bg-[#14b8a6] mb-8" />
 
                     {/* Subtitle */}
-                    <p className="text-lg text-slate-300 mb-12 font-light leading-relaxed max-w-lg">
+                    <p className="text-lg text-slate-300 mb-6 font-light leading-relaxed max-w-lg">
                         {t('hero_subtitle')}
                     </p>
+
+                    {/* Google Rating Badge */}
+                    <div className="mb-12">
+                        <GoogleRatingBadge rating={googleRating} profileUrl={profileUrl} />
+                    </div>
 
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row gap-4 items-end">

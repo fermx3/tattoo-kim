@@ -16,7 +16,11 @@ function Stat({ value, label }: StatProps) {
     );
 }
 
-export default function AboutSection() {
+interface AboutSectionProps {
+    googleScore?: number;
+}
+
+export default function AboutSection({ googleScore }: AboutSectionProps) {
     const t = useTranslations('home');
 
     return (
@@ -47,6 +51,9 @@ export default function AboutSection() {
                             <Stat value={t('about_stat1_value')} label={t('about_stat1_label')} />
                             <Stat value={t('about_stat2_value')} label={t('about_stat2_label')} />
                             <Stat value={t('about_stat3_value')} label={t('about_stat3_label')} />
+                            {googleScore && (
+                                <Stat value={`${googleScore}★`} label={t('about_stat4_label')} />
+                            )}
                         </div>
 
                         <CTAButton
