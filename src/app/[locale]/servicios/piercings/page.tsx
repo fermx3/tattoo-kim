@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
@@ -29,6 +29,7 @@ const materials = ['titanium', 'implant', 'sterile'] as const;
 
 export default async function PiercingsPage({ params }: Props) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'services' });
 
     return (

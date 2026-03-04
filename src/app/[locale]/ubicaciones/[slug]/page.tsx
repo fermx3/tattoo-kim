@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
@@ -31,6 +31,8 @@ export default async function LocationPage({ params }: Props) {
     const location = LOCATIONS.find((l) => l.slug === slug);
 
     if (!location) notFound();
+
+    setRequestLocale(locale);
 
     const t = await getTranslations({ locale, namespace: 'locations' });
     const otherLocation = LOCATIONS.find((l) => l.slug !== slug)!;

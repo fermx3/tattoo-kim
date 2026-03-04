@@ -1,10 +1,14 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/whatsapp/WhatsAppButton';
+
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({ locale }));
+}
 
 type Props = {
     children: React.ReactNode;
@@ -18,6 +22,8 @@ export default async function LocaleLayout({ children, params }: Props) {
     if (!routing.locales.includes(locale as 'es' | 'en')) {
         notFound();
     }
+
+    setRequestLocale(locale);
 
     const messages = await getMessages();
 
