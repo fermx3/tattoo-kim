@@ -157,6 +157,18 @@
         "whatsapp_cta": "Escribir por WhatsApp",
         "hours_label": "Horario"
     },
+    "artists": {
+        "label": "Nuestros Artistas",
+        "title": "Conoce al Equipo",
+        "desc": "Cada artista aporta un estilo único y una pasión genuina por el arte corporal. Conoce a quienes harán realidad tu próxima pieza.",
+        "location_label": "Ubicación",
+        "specialties_label": "Especialidades",
+        "view_work": "Ver trabajo",
+        "book_with": "Agendar con {name}",
+        "back_to_artists": "Volver a Artistas",
+        "no_artists": "Próximamente...",
+        "gallery_title": "Portfolio"
+    },
     "blog": {
         "label": "Blog",
         "title": "Consejos & Guías",

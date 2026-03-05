@@ -23,6 +23,7 @@ export interface Artist {
   specialties: string[];
   image: string;
   instagram?: string;
+  gallery?: string[];
   locale: Locale;
   translationSlug: string;
   content?: string;

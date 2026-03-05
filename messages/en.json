@@ -157,6 +157,18 @@
         "whatsapp_cta": "Message on WhatsApp",
         "hours_label": "Hours"
     },
+    "artists": {
+        "label": "Our Artists",
+        "title": "Meet the Team",
+        "desc": "Each artist brings a unique style and a genuine passion for body art. Meet the people who will bring your next piece to life.",
+        "location_label": "Location",
+        "specialties_label": "Specialties",
+        "view_work": "View work",
+        "book_with": "Book with {name}",
+        "back_to_artists": "Back to Artists",
+        "no_artists": "Coming soon...",
+        "gallery_title": "Portfolio"
+    },
     "blog": {
         "label": "Blog",
         "title": "Tips & Guides",
