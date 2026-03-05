@@ -81,7 +81,7 @@ async function fetchLocationReviews(
             'X-Goog-Api-Key': API_KEY,
             'X-Goog-FieldMask': 'rating,userRatingCount,reviews',
         },
-        next: { revalidate: false },
+        next: { tags: ['google-reviews'] },
     });
 
     if (!res.ok) {
