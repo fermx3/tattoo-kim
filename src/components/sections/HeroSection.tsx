@@ -19,7 +19,7 @@ export default function HeroSection({ googleRating, profileUrl }: HeroSectionPro
                 src="/images/hero-brand.jpg"
                 alt="Kim Tattoo Studio"
                 fill
-                className="object-cover object-center scale-[1.02] opacity-90"
+                className="object-cover object-right md:object-center scale-[1.02] opacity-90"
                 priority
                 sizes="100vw"
             />
