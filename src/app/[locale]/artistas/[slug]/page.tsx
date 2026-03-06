@@ -6,6 +6,10 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getArtistBySlug, getAllArtists } from '@/lib/content';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { buildAlternates } from '@/lib/seo';
+import { buildPersonJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonld';
+import { SITE_URL } from '@/lib/constants';
+import JsonLd from '@/components/ui/JsonLd';
 import type { Locale } from '@/types';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -20,13 +24,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale, slug } = await params;
     const artist = getArtistBySlug(locale as Locale, slug);
     if (!artist) return {};
+
+    const description = locale === 'es'
+        ? `Conoce a ${artist.name}, ${artist.role} en Tattoo Kim. Especialista en ${artist.specialties.join(', ')}.`
+        : `Meet ${artist.name}, ${artist.role} at Tattoo Kim. Specializing in ${artist.specialties.join(', ')}.`;
+
     return {
         title: `${artist.name} — ${artist.role} | Tattoo Kim`,
-        description:
-            locale === 'es'
-                ? `Conoce a ${artist.name}, ${artist.role} en Tattoo Kim. Especialista en ${artist.specialties.join(', ')}.`
-                : `Meet ${artist.name}, ${artist.role} at Tattoo Kim. Specializing in ${artist.specialties.join(', ')}.`,
+        description,
+        alternates: buildAlternates(locale, `/artistas/${slug}`, `/artists/${slug}`),
         openGraph: {
+            title: `${artist.name} — ${artist.role}`,
+            description,
             images: [{ url: artist.image }],
         },
     };
@@ -56,8 +65,18 @@ export default async function ArtistDetailPage({ params }: Props) {
 
     const whatsappLocation = artist.location === 'both' ? 'playa-del-carmen' : artist.location;
 
+    const jsonLdData = [
+        buildPersonJsonLd(artist, locale),
+        buildBreadcrumbJsonLd([
+            { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+            { name: locale === 'es' ? 'Artistas' : 'Artists', url: `${SITE_URL}/${locale}/${locale === 'es' ? 'artistas' : 'artists'}` },
+            { name: artist.name, url: `${SITE_URL}/${locale}/${locale === 'es' ? 'artistas' : 'artists'}/${slug}` },
+        ]),
+    ];
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={jsonLdData} />
             {/* Hero Section */}
             <section className="pt-32 pb-16 px-6">
                 <div className="max-w-5xl mx-auto">

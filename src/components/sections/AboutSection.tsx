@@ -71,7 +71,7 @@ export default function AboutSection({ googleScore }: AboutSectionProps) {
                         <div className="absolute -top-4 -right-4 w-full h-full border border-[#14b8a6]/20 z-0" />
                         <div className="relative z-10 overflow-hidden aspect-[4/5]">
                             <Image
-                                src="/images/about-artist.jpg"
+                                src="/images/about-artist.webp"
                                 alt="Kim Tattoo artist at work"
                                 fill
                                 className="object-cover object-center"

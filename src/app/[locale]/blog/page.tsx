@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/content';
 import type { Locale } from '@/types';
 import PageHero from '@/components/ui/PageHero';
+import JsonLd from '@/components/ui/JsonLd';
+import { buildAlternates } from '@/lib/seo';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonld';
+import { SITE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -17,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 ? 'Blog — Consejos & Guías | Tattoo Kim'
                 : 'Blog — Tips & Guides | Tattoo Kim',
         description: t('desc'),
+        alternates: buildAlternates(locale, '/blog', '/blog'),
     };
 }
 
@@ -27,8 +32,14 @@ export default async function BlogPage({ params }: Props) {
 
     const posts = getAllPosts(locale as Locale);
 
+    const breadcrumb = buildBreadcrumbJsonLd([
+        { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+        { name: locale === 'es' ? 'Blog' : 'Blog', url: `${SITE_URL}/${locale}/blog` },
+    ]);
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={breadcrumb} />
             <PageHero
                 label={t('label')}
                 title={t('title')}

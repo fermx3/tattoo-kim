@@ -1,8 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
-import { LOCATIONS, INSTAGRAM_URL } from '@/lib/constants';
+import JsonLd from '@/components/ui/JsonLd';
+import { LOCATIONS, INSTAGRAM_URL, SITE_URL } from '@/lib/constants';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { buildAlternates } from '@/lib/seo';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonld';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -15,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: locale === 'es'
             ? 'Contáctanos por WhatsApp para agendar tu cita en Tattoo Kim.'
             : 'Contact us via WhatsApp to book your appointment at Tattoo Kim.',
+        alternates: buildAlternates(locale, '/contacto', '/contact'),
     };
 }
 
@@ -30,8 +34,14 @@ export default async function ContactPage({ params }: Props) {
         sunday: loc('sunday'),
     };
 
+    const breadcrumb = buildBreadcrumbJsonLd([
+        { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+        { name: locale === 'es' ? 'Contacto' : 'Contact', url: `${SITE_URL}/${locale}/${locale === 'es' ? 'contacto' : 'contact'}` },
+    ]);
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={breadcrumb} />
             {/* Hero */}
             <PageHero
                 label={t('label')}

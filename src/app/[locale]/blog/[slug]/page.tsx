@@ -4,8 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getPostBySlug, getAllPosts } from '@/lib/content';
+import { getPostBySlug, getAllPosts, getTranslation } from '@/lib/content';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { buildAlternates } from '@/lib/seo';
+import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonld';
+import { SITE_URL } from '@/lib/constants';
+import JsonLd from '@/components/ui/JsonLd';
 import type { Locale } from '@/types';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -20,11 +24,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale, slug } = await params;
     const post = getPostBySlug(locale as Locale, slug);
     if (!post) return {};
+
+    const targetLocale = locale === 'es' ? 'en' : 'es';
+    const translatedSlug = getTranslation('blog', post.translationSlug, targetLocale as Locale);
+    const esSlug = locale === 'es' ? slug : (translatedSlug ?? slug);
+    const enSlug = locale === 'en' ? slug : (translatedSlug ?? slug);
+
     return {
         title: `${post.title} | Tattoo Kim`,
         description: post.description,
+        alternates: buildAlternates(locale, `/blog/${esSlug}`, `/blog/${enSlug}`),
         openGraph: {
+            type: 'article',
+            title: post.title,
+            description: post.description,
             images: [{ url: post.image }],
+            publishedTime: post.date,
         },
     };
 }
@@ -43,8 +58,18 @@ export default async function BlogPostPage({ params }: Props) {
         { year: 'numeric', month: 'long', day: 'numeric' }
     );
 
+    const jsonLdData = [
+        buildArticleJsonLd(post, locale),
+        buildBreadcrumbJsonLd([
+            { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+            { name: 'Blog', url: `${SITE_URL}/${locale}/blog` },
+            { name: post.title, url: `${SITE_URL}/${locale}/blog/${slug}` },
+        ]),
+    ];
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={jsonLdData} />
             {/* Cover Image */}
             <div className="relative w-full h-[50vh] min-h-[320px] max-h-[520px] overflow-hidden">
                 <Image

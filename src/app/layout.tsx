@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   description:
     'Estudio profesional de tatuajes y piercings en Playa del Carmen y Cancún. Arte personalizado, higiene total.',
   metadataBase: new URL('https://www.tattookim.com.mx'),
+  openGraph: {
+    type: 'website',
+    siteName: 'Tattoo Kim',
+    locale: 'es_MX',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 type Props = {

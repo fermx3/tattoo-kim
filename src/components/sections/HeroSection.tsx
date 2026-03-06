@@ -16,7 +16,7 @@ export default function HeroSection({ googleRating, profileUrl }: HeroSectionPro
         <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
             {/* Background image */}
             <Image
-                src="/images/hero-brand.jpg"
+                src="/images/hero-brand.webp"
                 alt="Kim Tattoo Studio"
                 fill
                 className="object-cover object-right md:object-center scale-[1.02] opacity-90"

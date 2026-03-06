@@ -2,8 +2,11 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
-import { LOCATIONS } from '@/lib/constants';
+import JsonLd from '@/components/ui/JsonLd';
+import { LOCATIONS, SITE_URL } from '@/lib/constants';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { buildAlternates } from '@/lib/seo';
+import { buildLocalBusinessJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonld';
 import Link from 'next/link';
 
 type Props = {
@@ -23,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             ? `Estudio ${location.name} | Tattoo Kim`
             : `${location.name} Studio | Tattoo Kim`,
         description: location.address,
+        alternates: buildAlternates(locale, `/ubicaciones/${slug}`, `/locations/${slug}`),
     };
 }
 
@@ -48,8 +52,17 @@ export default async function LocationPage({ params }: Props) {
         (h, i, arr) => arr.findIndex((x) => x.label === h.label && x.value === h.value) === i
     );
 
+    const jsonLdData = [
+        buildLocalBusinessJsonLd(location, locale),
+        buildBreadcrumbJsonLd([
+            { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+            { name: location.name, url: `${SITE_URL}/${locale}/${locale === 'es' ? 'ubicaciones' : 'locations'}/${slug}` },
+        ]),
+    ];
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={jsonLdData} />
             {/* Hero */}
             <PageHero
                 label={t('label')}

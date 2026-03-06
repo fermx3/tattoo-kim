@@ -1,7 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
+import JsonLd from '@/components/ui/JsonLd';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { buildAlternates } from '@/lib/seo';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonld';
+import { SITE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -13,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             ? 'Piercings Profesionales | Tattoo Kim — Playa del Carmen & Cancún'
             : 'Professional Piercings | Tattoo Kim — Playa del Carmen & Cancún',
         description: t('piercings_desc'),
+        alternates: buildAlternates(locale, '/servicios/piercings', '/services/piercings'),
     };
 }
 
@@ -32,8 +37,14 @@ export default async function PiercingsPage({ params }: Props) {
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'services' });
 
+    const breadcrumb = buildBreadcrumbJsonLd([
+        { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+        { name: 'Piercings', url: `${SITE_URL}/${locale === 'es' ? 'es/servicios/piercings' : 'en/services/piercings'}` },
+    ]);
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={breadcrumb} />
             {/* Hero */}
             <PageHero
                 label={t('piercings_label')}

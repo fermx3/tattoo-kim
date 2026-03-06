@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { getAllArtists } from '@/lib/content';
 import type { Locale } from '@/types';
 import PageHero from '@/components/ui/PageHero';
+import JsonLd from '@/components/ui/JsonLd';
+import { buildAlternates } from '@/lib/seo';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonld';
+import { SITE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -17,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 ? 'Artistas — Conoce al Equipo | Tattoo Kim'
                 : 'Artists — Meet the Team | Tattoo Kim',
         description: t('desc'),
+        alternates: buildAlternates(locale, '/artistas', '/artists'),
     };
 }
 
@@ -40,8 +45,14 @@ export default async function ArtistsPage({ params }: Props) {
 
     const artists = getAllArtists(locale as Locale);
 
+    const breadcrumb = buildBreadcrumbJsonLd([
+        { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+        { name: locale === 'es' ? 'Artistas' : 'Artists', url: `${SITE_URL}/${locale}/${locale === 'es' ? 'artistas' : 'artists'}` },
+    ]);
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={breadcrumb} />
             <PageHero
                 label={t('label')}
                 title={t('title')}

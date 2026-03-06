@@ -1,7 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
+import JsonLd from '@/components/ui/JsonLd';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { buildAlternates } from '@/lib/seo';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonld';
+import { SITE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -13,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             ? 'Tatuajes | Tattoo Kim — Playa del Carmen & Cancún'
             : 'Tattoos | Tattoo Kim — Playa del Carmen & Cancún',
         description: t('tattoos_desc'),
+        alternates: buildAlternates(locale, '/servicios/tatuajes', '/services/tattoos'),
     };
 }
 
@@ -32,8 +37,14 @@ export default async function TattoosPage({ params }: Props) {
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'services' });
 
+    const breadcrumb = buildBreadcrumbJsonLd([
+        { name: 'Tattoo Kim', url: `${SITE_URL}/${locale}` },
+        { name: locale === 'es' ? 'Tatuajes' : 'Tattoos', url: `${SITE_URL}/${locale === 'es' ? 'es/servicios/tatuajes' : 'en/services/tattoos'}` },
+    ]);
+
     return (
         <main className="min-h-screen bg-[#121212]">
+            <JsonLd data={breadcrumb} />
             {/* Hero */}
             <PageHero
                 label={t('tattoos_label')}

@@ -3,7 +3,7 @@
 > Track progress by checking boxes as tasks are completed.
 > Dependencies are noted inline with → arrows.
 
-**Última actualización:** 2026-02-23 (Phase 5 completa + UX fixes navegación mobile)
+**Última actualización:** 2026-03-05 (Phases 6–8 completas + limpieza autor + imágenes WebP)
 
 ---
 
@@ -73,7 +73,7 @@
 - [x] **4.4** Implement language switcher component that preserves current page context — `LanguageSwitcher.tsx` con `usePathname` + `useRouter` de next-intl
 - [x] **4.5** Build "translation not available" fallback page — `src/app/[locale]/not-available/page.tsx` con soporte `?originalUrl=`
 - [x] **4.6** Test middleware: root `/` redirects to `/es`, `Accept-Language: en` redirects to `/en` — verificado con `curl` (HTTP 301)
-- [ ] **4.7** Verify `hreflang` alternate links render correctly on all pages → *depends on 7.3*
+- [x] **4.7** Verify `hreflang` alternate links render correctly on all pages — implementado en Phase 8
 
 ---
 
@@ -102,53 +102,53 @@
 
 ---
 
-## Phase 6: Blog System 📝
+## Phase 6: Blog System ✅
 
-- [ ] **6.1** Build MDX parsing utility (`src/lib/mdx.ts`) — read files, parse frontmatter, compile MDX
-- [ ] **6.2** Build content fetching functions — `getAllPosts(locale)`, `getPostBySlug(locale, slug)` → *depends on 6.1*
-- [ ] **6.3** Create Blog listing page (`/blog`) — card grid, sorted by date → *depends on 6.2*
-- [ ] **6.4** Create Blog post page (`/blog/[slug]`) — MDX rendering, metadata, CTA footer → *depends on 6.2*
-- [ ] **6.5** Build blog card component (image, title, date, excerpt)
-- [ ] **6.6** Write first 3 blog posts in Spanish MDX → *depends on 1.5*
-- [ ] **6.7** Translate blog posts to English MDX → *depends on 6.6*
-- [ ] **6.8** Implement `generateStaticParams()` for blog routes
-- [ ] **6.9** Add translation linking between ES ↔ EN blog posts via `translationSlug`
+- [x] **6.1** Build MDX parsing utility — `gray-matter` + `next-mdx-remote/rsc` en `src/lib/content.ts`
+- [x] **6.2** Build content fetching functions — `getAllPosts(locale)`, `getPostBySlug(locale, slug)` en `src/lib/content.ts`
+- [x] **6.3** Create Blog listing page (`/blog`) — card grid, sorted by date, hover effects
+- [x] **6.4** Create Blog post page (`/blog/[slug]`) — MDX rendering, cover image, metadata, WhatsApp CTA footer
+- [x] **6.5** Build blog card component — inline en listing page (image, tags, title, description, date)
+- [x] **6.6** Write first 2 blog posts in Spanish MDX — `cuidados-tatuaje.mdx`, `cuidados-piercing.mdx`
+- [x] **6.7** Translate blog posts to English MDX — `tattoo-aftercare.mdx`, `piercing-aftercare.mdx`
+- [x] **6.8** Implement `generateStaticParams()` for blog routes
+- [x] **6.9** Add translation linking between ES ↔ EN blog posts via `translationSlug`
 - [ ] **6.10** Validate frontmatter schema at build time (fail build on invalid MDX)
 
 ---
 
-## Phase 7: Artists System 🎨
+## Phase 7: Artists System ✅
 
-- [ ] **7.1** Build artist content fetching — `getAllArtists(locale)`, `getArtistBySlug(locale, slug)` → *depends on 6.1 (shared MDX util)*
-- [ ] **7.2** Create Artists listing page — grid of artist cards with photos and specialties
-- [ ] **7.3** Create Individual artist page — bio (MDX body), specialties, gallery, location, Instagram link, WhatsApp CTA
-- [ ] **7.4** Build artist card component
-- [ ] **7.5** Write artist MDX content in Spanish → *depends on 1.3*
-- [ ] **7.6** Translate artist MDX to English → *depends on 7.5*
-- [ ] **7.7** Implement `generateStaticParams()` for artist routes
-- [ ] **7.8** Artist-specific WhatsApp pre-filled messages ("Hola, quiero una cita con Kim...")
+- [x] **7.1** Build artist content fetching — `getAllArtists(locale)`, `getArtistBySlug(locale, slug)` en `src/lib/content.ts`
+- [x] **7.2** Create Artists listing page — grid con image, location, name, role, specialties
+- [x] **7.3** Create Individual artist page — headshot, bio (MDX), specialties, gallery CSS columns, WhatsApp CTA
+- [x] **7.4** Build artist card component — inline en listing page
+- [x] **7.5** Write artist MDX content in Spanish — erick-bones, tammy
+- [x] **7.6** Translate artist MDX to English
+- [x] **7.7** Implement `generateStaticParams()` for artist routes
+- [x] **7.8** Artist-specific WhatsApp pre-filled messages con nombre del artista
 
 ---
 
-## Phase 8: SEO 🔍
+## Phase 8: SEO ✅
 
-- [ ] **8.1** Implement `generateMetadata()` on all page routes with unique titles and descriptions
-- [ ] **8.2** Add Open Graph and Twitter Card meta tags to all pages → *depends on 1.10*
-- [ ] **8.3** Add `hreflang` alternate links on every page (ES ↔ EN)
-- [ ] **8.4** Add canonical URLs to every page
-- [ ] **8.5** Implement JSON-LD structured data: `LocalBusiness` for both locations
-- [ ] **8.6** Implement JSON-LD: `Article` for blog posts
-- [ ] **8.7** Implement JSON-LD: `Person` for artist pages
-- [ ] **8.8** Implement JSON-LD: `BreadcrumbList` on all pages
-- [ ] **8.9** Configure `next-sitemap` to generate sitemap.xml and robots.txt at build time
-- [ ] **8.10** Verify all pages have unique `<title>` and `<meta description>` — no duplicates
+- [x] **8.1** Implement `generateMetadata()` on all page routes with unique titles and descriptions
+- [x] **8.2** Add Open Graph and Twitter Card meta tags — defaults en root layout + OG específico por página
+- [x] **8.3** Add `hreflang` alternate links on every page (ES ↔ EN) — `buildAlternates()` en `src/lib/seo.ts`
+- [x] **8.4** Add canonical URLs to every page — incluido en `alternates` de cada `generateMetadata()`
+- [x] **8.5** Implement JSON-LD structured data: `TattooParlor` para ambas ubicaciones — `src/lib/jsonld.ts`
+- [x] **8.6** Implement JSON-LD: `Article` for blog posts
+- [x] **8.7** Implement JSON-LD: `Person` for artist pages
+- [x] **8.8** Implement JSON-LD: `BreadcrumbList` on all pages
+- [x] **8.9** Sitemap y robots.txt — Next.js App Router nativo (`src/app/sitemap.ts`, `src/app/robots.ts`)
+- [x] **8.10** Verify all pages have unique `<title>` and `<meta description>` — confirmado en build
 - [ ] **8.11** Test structured data with Google Rich Results Test
 
 ---
 
 ## Phase 9: Performance Optimization ⚡
 
-- [ ] **9.1** Audit all images: convert to WebP, enforce size limits (< 300KB), add dimensions
+- [x] **9.1** Audit all images: convert to WebP, enforce size limits (< 300KB) — `hero-brand.jpg`, `about-artist.jpg`, `hero-bg.jpg` eliminados; `.webp` generados con `cwebp -q 85`
 - [ ] **9.2** Configure `next/image` with responsive sizes and priority flag on above-fold hero images
 - [ ] **9.3** Generate blurDataURL placeholders for hero and gallery images
 - [ ] **9.4** Ensure fonts are preloaded with `font-display: swap` and `size-adjust`

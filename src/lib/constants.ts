@@ -1,7 +1,6 @@
 import type { StudioLocation } from '@/types';
 
 // ─── WhatsApp ────────────────────────────────────────────────────────────────
-// TODO: Replace with real phone numbers (international format, no spaces or dashes)
 export const WHATSAPP_NUMBERS = {
     'playa-del-carmen': '529842809885', // +52 984 280 9885
     cancun: '529841447501',            // +52 984 144 7501
