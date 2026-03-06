@@ -31,8 +31,23 @@ const styles = [
     { key: 'color', icon: '◐' },
     { key: 'fine_line', icon: '—' },
     { key: 'illustrative', icon: '✿' },
+    { key: 'realism', icon: '◎' },
+    { key: 'chicano', icon: '✠' },
+    { key: 'tribal', icon: '◬' },
     { key: 'custom', icon: '✦' },
 ] as const;
+
+const styleToSpecialties: Record<string, string[]> = {
+    blackwork: ['blackwork'],
+    lettering: ['lettering'],
+    neo_traditional: ['neo-traditional'],
+    color: ['color'],
+    fine_line: ['fine-line'],
+    illustrative: ['illustrative', 'cartoon'],
+    realism: ['realismo', 'realism'],
+    chicano: ['chicano'],
+    tribal: ['tribal'],
+};
 
 const steps = [1, 2, 3, 4] as const;
 
@@ -98,22 +113,44 @@ export default async function TattoosPage({ params }: Props) {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
-                        {styles.map(({ key, icon }) => (
-                            <div
-                                key={key}
-                                className="bg-[#121212] p-8 group hover:bg-[#0d1f1e] transition-colors duration-300"
-                            >
-                                <div className="text-3xl text-[#14b8a6] mb-5 group-hover:scale-110 transition-transform duration-300 inline-block">
-                                    {icon}
+                        {styles.map(({ key, icon }) => {
+                            const matchedArtists = key === 'custom'
+                                ? artists
+                                : artists.filter((a) =>
+                                    a.specialties?.some((s) =>
+                                        styleToSpecialties[key]?.includes(s.toLowerCase())
+                                    )
+                                );
+                            return (
+                                <div
+                                    key={key}
+                                    className="bg-[#121212] p-8 group hover:bg-[#0d1f1e] transition-colors duration-300"
+                                >
+                                    <div className="text-3xl text-[#14b8a6] mb-5 group-hover:scale-110 transition-transform duration-300 inline-block">
+                                        {icon}
+                                    </div>
+                                    <h3 className="text-lg font-black text-white uppercase tracking-wider mb-3">
+                                        {t(`style_${key}_title` as Parameters<typeof t>[0])}
+                                    </h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">
+                                        {t(`style_${key}_desc` as Parameters<typeof t>[0])}
+                                    </p>
+                                    {matchedArtists.length > 0 && (
+                                        <div className="flex flex-wrap gap-2 mt-4">
+                                            {matchedArtists.map((artist) => (
+                                                <a
+                                                    key={artist.slug}
+                                                    href={`/${locale}/${locale === 'es' ? 'artistas' : 'artists'}/${artist.slug}`}
+                                                    className="text-[10px] font-black uppercase tracking-wider text-[#14b8a6] border border-[#14b8a6]/30 px-2 py-1 hover:bg-[#14b8a6]/10 transition-colors"
+                                                >
+                                                    {artist.name}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                                <h3 className="text-lg font-black text-white uppercase tracking-wider mb-3">
-                                    {t(`style_${key}_title` as Parameters<typeof t>[0])}
-                                </h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">
-                                    {t(`style_${key}_desc` as Parameters<typeof t>[0])}
-                                </p>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
