@@ -8,17 +8,22 @@ export async function GET(req: Request) {
     }
 
     try {
-        // Invalidate the cached Google Places data
-        revalidateTag('google-reviews', 'max');
+        // Invalidate the cached Google Places data for both locales
+        revalidateTag('google-reviews-es', 'max');
+        revalidateTag('google-reviews-en', 'max');
 
-        // Warm the cache with a fresh fetch
-        const locations = await fetchAllGoogleReviews();
-        const combined = combineRatings(locations);
+        // Warm the cache with fresh fetches for both languages
+        const [locationsEs, locationsEn] = await Promise.all([
+            fetchAllGoogleReviews('es'),
+            fetchAllGoogleReviews('en'),
+        ]);
+        const combined = combineRatings(locationsEs);
 
         return NextResponse.json({
             ok: true,
             revalidatedAt: new Date().toISOString(),
-            locations: locations.length,
+            locations: locationsEs.length,
+            locationsEn: locationsEn.length,
             score: combined.score,
             totalReviews: combined.totalReviews,
         });

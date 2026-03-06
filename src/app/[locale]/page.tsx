@@ -40,7 +40,7 @@ export default async function HomePage({ params }: Props) {
     const { locale } = await params;
     setRequestLocale(locale);
 
-    const googleData = await fetchAllGoogleReviews();
+    const googleData = await fetchAllGoogleReviews(locale);
     const combined = combineRatings(googleData);
     const profileUrl = googleData[0]?.profileUrl ?? 'https://maps.app.goo.gl/Jptg6VLaGabGqM7a8';
 

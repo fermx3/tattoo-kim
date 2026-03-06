@@ -12,34 +12,64 @@ const GOOGLE_PROFILE_URLS: Record<string, string> = {
 
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 
-const FALLBACK_DATA: GoogleLocationRating[] = [
-    {
-        location: 'playa-del-carmen',
-        score: 4.9,
-        totalReviews: 127,
-        reviews: [
-            {
-                author: 'Valentina R.',
-                rating: 5,
-                text: 'Kim transformó mi idea en algo mucho más hermoso de lo que imaginé. El detalle y la dedicación son incomparables.',
-                date: '2025-01-15',
-            },
-            {
-                author: 'Diego M.',
-                rating: 5,
-                text: 'El ambiente del estudio te hace sentir seguro y en buenas manos desde el primer momento.',
-                date: '2025-02-10',
-            },
-            {
-                author: 'Sofía L.',
-                rating: 5,
-                text: 'Ya llevo tres tatuajes con Kim y cada vez supera al anterior. Es difícil ir a otro lugar.',
-                date: '2025-03-05',
-            },
-        ],
-        profileUrl: GOOGLE_PROFILE_URLS['playa-del-carmen'],
-    },
-];
+const FALLBACK_DATA: Record<string, GoogleLocationRating[]> = {
+    es: [
+        {
+            location: 'playa-del-carmen',
+            score: 4.9,
+            totalReviews: 127,
+            reviews: [
+                {
+                    author: 'Valentina R.',
+                    rating: 5,
+                    text: 'Kim transformó mi idea en algo mucho más hermoso de lo que imaginé. El detalle y la dedicación son incomparables.',
+                    date: '2025-01-15',
+                },
+                {
+                    author: 'Diego M.',
+                    rating: 5,
+                    text: 'El ambiente del estudio te hace sentir seguro y en buenas manos desde el primer momento.',
+                    date: '2025-02-10',
+                },
+                {
+                    author: 'Sofía L.',
+                    rating: 5,
+                    text: 'Ya llevo tres tatuajes con Kim y cada vez supera al anterior. Es difícil ir a otro lugar.',
+                    date: '2025-03-05',
+                },
+            ],
+            profileUrl: GOOGLE_PROFILE_URLS['playa-del-carmen'],
+        },
+    ],
+    en: [
+        {
+            location: 'playa-del-carmen',
+            score: 4.9,
+            totalReviews: 127,
+            reviews: [
+                {
+                    author: 'Valentina R.',
+                    rating: 5,
+                    text: 'Kim turned my idea into something far more beautiful than I ever imagined. The detail and dedication are unmatched.',
+                    date: '2025-01-15',
+                },
+                {
+                    author: 'Diego M.',
+                    rating: 5,
+                    text: 'The studio atmosphere makes you feel safe and in good hands from the very first moment.',
+                    date: '2025-02-10',
+                },
+                {
+                    author: 'Sofía L.',
+                    rating: 5,
+                    text: "I already have three tattoos by Kim and each one surpasses the last. It's hard to go anywhere else.",
+                    date: '2025-03-05',
+                },
+            ],
+            profileUrl: GOOGLE_PROFILE_URLS['playa-del-carmen'],
+        },
+    ],
+};
 
 interface PlacesApiReview {
     authorAttribution?: {
@@ -70,18 +100,19 @@ function mapApiReview(review: PlacesApiReview): GoogleReviewData {
 
 async function fetchLocationReviews(
     location: 'playa-del-carmen' | 'cancun',
+    locale: string = 'es',
 ): Promise<GoogleLocationRating | null> {
     const placeId = PLACE_IDS[location];
     if (!placeId || !API_KEY) return null;
 
-    const url = `https://places.googleapis.com/v1/places/${placeId}`;
+    const url = `https://places.googleapis.com/v1/places/${placeId}?languageCode=${locale}`;
     const res = await fetch(url, {
         headers: {
             'Content-Type': 'application/json',
             'X-Goog-Api-Key': API_KEY,
             'X-Goog-FieldMask': 'rating,userRatingCount,reviews',
         },
-        next: { tags: ['google-reviews'] },
+        next: { tags: [`google-reviews-${locale}`] },
     });
 
     if (!res.ok) {
@@ -103,21 +134,23 @@ async function fetchLocationReviews(
     };
 }
 
-export async function fetchAllGoogleReviews(): Promise<GoogleLocationRating[]> {
+export async function fetchAllGoogleReviews(locale: string = 'es'): Promise<GoogleLocationRating[]> {
+    const fallback = FALLBACK_DATA[locale] ?? FALLBACK_DATA.es;
+
     try {
         const results = await Promise.all([
-            fetchLocationReviews('playa-del-carmen'),
-            fetchLocationReviews('cancun'),
+            fetchLocationReviews('playa-del-carmen', locale),
+            fetchLocationReviews('cancun', locale),
         ]);
 
         const valid = results.filter(
             (r): r is GoogleLocationRating => r !== null && r.reviews.length > 0,
         );
 
-        return valid.length > 0 ? valid : FALLBACK_DATA;
+        return valid.length > 0 ? valid : fallback;
     } catch (error) {
         console.warn('Google Reviews fetch failed, using fallback:', error);
-        return FALLBACK_DATA;
+        return fallback;
     }
 }
 
