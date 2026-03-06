@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import CTAButton from '@/components/ui/CTAButton';
+import { Link } from '@/i18n/navigation';
 import GoogleRatingBadge from '@/components/ui/GoogleRatingBadge';
 import type { CombinedGoogleRating } from '@/types';
 
@@ -63,13 +64,12 @@ export default function HeroSection({ googleRating, profileUrl }: HeroSectionPro
                             size="lg"
                             label={t('hero_cta')}
                         />
-                        <CTAButton
-                            location="playa-del-carmen"
-                            context="general"
-                            variant="secondary"
-                            size="lg"
-                            label={t('hero_secondary_cta')}
-                        />
+                        <Link
+                            href="/servicios/tatuajes"
+                            className="inline-block font-black uppercase tracking-widest transition-all px-12 py-5 text-sm bg-transparent text-white border-b-2 border-[#14b8a6] hover:text-[#14b8a6] rounded-none px-0 py-1"
+                        >
+                            {t('hero_secondary_cta')}
+                        </Link>
                     </div>
                 </div>
             </div>
