@@ -126,7 +126,7 @@ export default async function PiercingsPage({ params }: Props) {
                     </h2>
                     <p className="text-slate-400 mb-10 text-lg">{t('piercings_cta_desc')}</p>
                     <a
-                        href={buildWhatsAppUrl('playa-del-carmen', 'piercing')}
+                        href={buildWhatsAppUrl('playa-del-carmen', 'piercing', locale)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block bg-[#14b8a6] text-[#121212] px-10 py-4 text-[11px] font-black uppercase tracking-widest hover:bg-white transition-colors duration-300"

@@ -1,7 +1,7 @@
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 type LocationSlug = 'playa-del-carmen' | 'cancun';
-type WhatsAppContext = 'general' | 'tattoo-quote' | 'piercing-appointment' | { artist: string };
+type WhatsAppContext = 'general' | 'tattoo' | 'piercing' | { artist: string };
 
 interface CTAButtonProps {
     location?: LocationSlug;
@@ -10,6 +10,7 @@ interface CTAButtonProps {
     size?: 'sm' | 'md' | 'lg';
     label: string;
     className?: string;
+    locale?: string;
 }
 
 export default function CTAButton({
@@ -19,8 +20,9 @@ export default function CTAButton({
     size = 'md',
     label,
     className = '',
+    locale = 'es',
 }: CTAButtonProps) {
-    const url = buildWhatsAppUrl(location, context);
+    const url = buildWhatsAppUrl(location, context, locale);
 
     const sizeClasses = {
         sm: 'px-6 py-3 text-xs',

@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }: Props) {
                         {t('whatsapp_cta_desc')}
                     </p>
                     <a
-                        href={buildWhatsAppUrl('playa-del-carmen', 'piercing')}
+                        href={buildWhatsAppUrl('playa-del-carmen', 'general', locale)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block bg-[#14b8a6] text-[#121212] px-10 py-4 text-[11px] font-black uppercase tracking-widest hover:bg-white transition-colors duration-300"

@@ -115,7 +115,7 @@ export default async function LocationPage({ params }: Props) {
                         </a>
 
                         <a
-                            href={buildWhatsAppUrl(location.slug as 'playa-del-carmen' | 'cancun', 'general')}
+                            href={buildWhatsAppUrl(location.slug as 'playa-del-carmen' | 'cancun', 'general', locale)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block bg-[#14b8a6] text-[#121212] px-6 py-4 text-[11px] font-black uppercase tracking-widest hover:bg-white transition-colors duration-300 w-fit"

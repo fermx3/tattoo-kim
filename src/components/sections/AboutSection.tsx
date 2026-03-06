@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import CTAButton from '@/components/ui/CTAButton';
 
 interface StatProps {
@@ -22,6 +22,7 @@ interface AboutSectionProps {
 
 export default function AboutSection({ googleScore }: AboutSectionProps) {
     const t = useTranslations('home');
+    const locale = useLocale();
 
     return (
         <section className="py-32 bg-[#0d0d0d]">
@@ -62,6 +63,7 @@ export default function AboutSection({ googleScore }: AboutSectionProps) {
                             variant="primary"
                             size="md"
                             label={t('about_cta')}
+                            locale={locale}
                         />
                     </div>
 

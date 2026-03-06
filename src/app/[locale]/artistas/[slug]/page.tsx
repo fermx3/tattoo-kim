@@ -128,7 +128,7 @@ export default async function ArtistDetailPage({ params }: Props) {
                             {/* WhatsApp CTA */}
                             <div className="mt-8">
                                 <a
-                                    href={buildWhatsAppUrl(whatsappLocation, { artist: artist.name })}
+                                    href={buildWhatsAppUrl(whatsappLocation, { artist: artist.name }, locale)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-block bg-[#14b8a6] text-[#121212] px-10 py-4 text-[11px] font-black uppercase tracking-widest hover:bg-white transition-colors duration-300"

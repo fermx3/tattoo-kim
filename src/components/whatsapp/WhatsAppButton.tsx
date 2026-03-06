@@ -1,13 +1,14 @@
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 type LocationSlug = 'playa-del-carmen' | 'cancun';
-type WhatsAppContext = 'general' | 'tattoo-quote' | 'piercing-appointment' | { artist: string };
+type WhatsAppContext = 'general' | 'tattoo' | 'piercing' | { artist: string };
 
 interface WhatsAppButtonProps {
     location?: LocationSlug;
     context?: WhatsAppContext;
     variant: 'floating' | 'inline';
     label?: string;
+    locale?: string;
 }
 
 export default function WhatsAppButton({
@@ -15,8 +16,9 @@ export default function WhatsAppButton({
     context = 'general',
     variant,
     label = 'WhatsApp',
+    locale = 'es',
 }: WhatsAppButtonProps) {
-    const url = buildWhatsAppUrl(location, context);
+    const url = buildWhatsAppUrl(location, context, locale);
 
     if (variant === 'floating') {
         return (

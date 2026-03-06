@@ -1,8 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import CTAButton from '@/components/ui/CTAButton';
 
 export default function FinalCTASection() {
     const t = useTranslations('home');
+    const locale = useLocale();
 
     return (
         <section className="relative py-40 overflow-hidden">
@@ -44,6 +45,7 @@ export default function FinalCTASection() {
                     variant="primary"
                     size="lg"
                     label={t('final_cta_button')}
+                    locale={locale}
                 />
             </div>
         </section>

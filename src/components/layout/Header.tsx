@@ -78,7 +78,7 @@ export default function Header({ locale }: HeaderProps) {
                 <div className="flex items-center gap-6">
                     <LanguageSwitcher locale={locale} />
                     <a
-                        href={buildWhatsAppUrl('playa-del-carmen', 'general')}
+                        href={buildWhatsAppUrl('playa-del-carmen', 'general', locale)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hidden md:inline-block bg-[#134e4a] text-white px-6 py-3 text-[10px] font-black uppercase tracking-widest hover:bg-[#14b8a6] transition-all"

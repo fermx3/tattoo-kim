@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import CTAButton from '@/components/ui/CTAButton';
 import { Link } from '@/i18n/navigation';
 import GoogleRatingBadge from '@/components/ui/GoogleRatingBadge';
@@ -12,6 +12,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ googleRating, profileUrl }: HeroSectionProps) {
     const t = useTranslations('home');
+    const locale = useLocale();
 
     return (
         <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
@@ -63,6 +64,7 @@ export default function HeroSection({ googleRating, profileUrl }: HeroSectionPro
                             variant="primary"
                             size="lg"
                             label={t('hero_cta')}
+                            locale={locale}
                         />
                         <Link
                             href="/servicios/tatuajes"

@@ -32,7 +32,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Header locale={locale as 'es' | 'en'} />
             <main>{children}</main>
             <Footer locale={locale as 'es' | 'en'} />
-            <WhatsAppButton location="playa-del-carmen" variant="floating" />
+            <WhatsAppButton location="playa-del-carmen" variant="floating" locale={locale} />
         </NextIntlClientProvider>
     );
 }

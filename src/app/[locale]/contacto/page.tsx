@@ -97,7 +97,8 @@ export default async function ContactPage({ params }: Props) {
                                 <a
                                     href={buildWhatsAppUrl(
                                         location.slug as 'playa-del-carmen' | 'cancun',
-                                        'general'
+                                        'general',
+                                        locale
                                     )}
                                     target="_blank"
                                     rel="noopener noreferrer"

@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { LOCATIONS } from '@/lib/constants';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
@@ -29,6 +29,7 @@ function PhoneIcon() {
 
 export default function LocationsSection() {
     const t = useTranslations('home');
+    const locale = useLocale();
 
     return (
         <section className="py-32 px-6 lg:px-16 max-w-7xl mx-auto">
@@ -45,7 +46,7 @@ export default function LocationsSection() {
             {/* Location cards */}
             <div className="grid md:grid-cols-2 gap-6">
                 {LOCATIONS.map((location) => {
-                    const whatsappUrl = buildWhatsAppUrl(location.slug, 'general');
+                    const whatsappUrl = buildWhatsAppUrl(location.slug, 'general', locale);
                     const isPlaya = location.slug === 'playa-del-carmen';
 
                     return (
