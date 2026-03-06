@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import type { ReactNode } from 'react';
 
 interface HomeLinkProps {
@@ -26,7 +25,7 @@ export default function HomeLink({ href, className, 'aria-label': ariaLabel, chi
     }
 
     return (
-        <Link href={href} className={className} aria-label={ariaLabel} onClick={handleClick}>
+        <Link href={href as '/'} className={className} aria-label={ariaLabel} onClick={handleClick}>
             {children}
         </Link>
     );

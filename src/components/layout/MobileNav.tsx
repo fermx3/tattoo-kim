@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 
 interface MobileNavProps {
     links: { href: string; label: string }[];
@@ -110,7 +110,7 @@ export default function MobileNav({ links, locale }: MobileNavProps) {
                             style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}
                         >
                             <Link
-                                href={href}
+                                href={href as '/'}
                                 onClick={() => {
                                     setOpen(false);
                                     // First link is always "Inicio/Home" — scroll to top

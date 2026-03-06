@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import HomeLink from '@/components/ui/HomeLink';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileNav from './MobileNav';
@@ -9,29 +9,22 @@ interface HeaderProps {
     locale: 'es' | 'en';
 }
 
-const navLinks = {
-    es: [
-        { href: '/es', label: 'Inicio' },
-        { href: '/es/artistas', label: 'Artistas' },
-        { href: '/es/servicios/tatuajes', label: 'Tatuajes' },
-        { href: '/es/servicios/piercings', label: 'Piercings' },
-        { href: '/es/ubicaciones/playa-del-carmen', label: 'Ubicaciones' },
-        { href: '/es/blog', label: 'Blog' },
-    ],
-    en: [
-        { href: '/en', label: 'Home' },
-        { href: '/en/artists', label: 'Artists' },
-        { href: '/en/services/tattoos', label: 'Tattoos' },
-        { href: '/en/services/piercings', label: 'Piercings' },
-        { href: '/en/locations/playa-del-carmen', label: 'Locations' },
-        { href: '/en/blog', label: 'Blog' },
-    ],
-};
+const navLinks = [
+    { href: '/' as const, label: { es: 'Inicio', en: 'Home' } },
+    { href: '/artistas' as const, label: { es: 'Artistas', en: 'Artists' } },
+    { href: '/servicios/tatuajes' as const, label: { es: 'Tatuajes', en: 'Tattoos' } },
+    { href: '/servicios/piercings' as const, label: { es: 'Piercings', en: 'Piercings' } },
+    { href: '/ubicaciones/playa-del-carmen' as const, label: { es: 'Ubicaciones', en: 'Locations' } },
+    { href: '/blog' as const, label: { es: 'Blog', en: 'Blog' } },
+];
 
 const ctaLabel = { es: 'Agenda tu Cita', en: 'Book Appointment' };
 
 export default function Header({ locale }: HeaderProps) {
-    const links = navLinks[locale];
+    const resolvedLinks = navLinks.map((link) => ({
+        href: link.href,
+        label: link.label[locale],
+    }));
 
     return (
         <header className="fixed top-0 w-full z-50 bg-[#121212]/90 backdrop-blur-xl border-b border-white/5">
@@ -41,7 +34,7 @@ export default function Header({ locale }: HeaderProps) {
             >
                 {/* Logo */}
                 <HomeLink
-                    href={`/${locale}`}
+                    href="/"
                     className="shrink-0"
                     aria-label="Kim Tattoo — Inicio"
                 >
@@ -57,16 +50,26 @@ export default function Header({ locale }: HeaderProps) {
 
                 {/* Desktop nav */}
                 <div className="hidden md:flex items-center gap-10">
-                    {links.map(({ href, label }, i) => {
-                        const NavLink = i === 0 ? HomeLink : Link;
+                    {resolvedLinks.map(({ href, label }, i) => {
+                        if (i === 0) {
+                            return (
+                                <HomeLink
+                                    key={href}
+                                    href={href}
+                                    className="text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#14b8a6] transition-colors font-black"
+                                >
+                                    {label}
+                                </HomeLink>
+                            );
+                        }
                         return (
-                            <NavLink
+                            <Link
                                 key={href}
                                 href={href}
                                 className="text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#14b8a6] transition-colors font-black"
                             >
                                 {label}
-                            </NavLink>
+                            </Link>
                         );
                     })}
                 </div>
@@ -82,7 +85,7 @@ export default function Header({ locale }: HeaderProps) {
                     >
                         {ctaLabel[locale]}
                     </a>
-                    <MobileNav links={links} locale={locale} />
+                    <MobileNav links={resolvedLinks} locale={locale} />
                 </div>
             </nav>
         </header>

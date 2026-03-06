@@ -1,20 +1,20 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 
 interface LanguageSwitcherProps {
     locale: 'es' | 'en';
 }
 
 export default function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
-    const pathname = usePathname();
     const router = useRouter();
+    const pathname = usePathname();
 
     function switchLocale(nextLocale: 'es' | 'en') {
         if (nextLocale === locale) return;
-        // Replace current locale prefix with target
-        const newPath = pathname.replace(`/${locale}`, `/${nextLocale}`);
-        router.push(newPath);
+        // Cast needed: usePathname may return dynamic paths like /artistas/[slug]
+        // but router.replace handles them correctly at runtime
+        router.replace(pathname as '/', { locale: nextLocale });
     }
 
     return (
