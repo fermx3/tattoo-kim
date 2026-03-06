@@ -10,6 +10,7 @@ import { buildAlternates } from '@/lib/seo';
 import { buildPersonJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonld';
 import { SITE_URL } from '@/lib/constants';
 import JsonLd from '@/components/ui/JsonLd';
+import GalleryLightbox from '@/components/ui/GalleryLightbox';
 import type { Locale } from '@/types';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -148,20 +149,12 @@ export default async function ArtistDetailPage({ params }: Props) {
                             {t('gallery_title')}
                         </h2>
 
-                        <div className="columns-2 md:columns-3 gap-px">
-                            {artist.gallery.map((img, i) => (
-                                <div key={img} className="break-inside-avoid mb-px">
-                                    <Image
-                                        src={img}
-                                        alt={`${artist.name} tattoo ${i + 1}`}
-                                        width={600}
-                                        height={600}
-                                        sizes="(max-width: 768px) 50vw, 33vw"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                        <GalleryLightbox
+                            images={artist.gallery.map((img, i) => ({
+                                src: img,
+                                alt: `${artist.name} tattoo ${i + 1}`,
+                            }))}
+                        />
                     </div>
                 </section>
             )}

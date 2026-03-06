@@ -1,5 +1,6 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import { useRouter, usePathname } from '@/i18n/navigation';
 
 interface LanguageSwitcherProps {
@@ -9,12 +10,17 @@ interface LanguageSwitcherProps {
 export default function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
     const router = useRouter();
     const pathname = usePathname();
+    const params = useParams();
 
     function switchLocale(nextLocale: 'es' | 'en') {
         if (nextLocale === locale) return;
-        // Cast needed: usePathname may return dynamic paths like /artistas/[slug]
-        // but router.replace handles them correctly at runtime
-        router.replace(pathname as '/', { locale: nextLocale });
+        // Extract dynamic params (slug, etc.) excluding locale
+        const { locale: _locale, ...dynamicParams } = params;
+        router.replace(
+            // @ts-expect-error -- pathname is a valid localized route key
+            { pathname, params: dynamicParams },
+            { locale: nextLocale }
+        );
     }
 
     return (
