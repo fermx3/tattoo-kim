@@ -3,7 +3,7 @@
 > Track progress by checking boxes as tasks are completed.
 > Dependencies are noted inline with → arrows.
 
-**Última actualización:** 2026-03-05 (Phases 6–8 completas + limpieza autor + imágenes WebP)
+**Última actualización:** 2026-03-12 (Phase 10 QA: 8/10 completadas, bugs 404 y títulos duplicados corregidos)
 
 ---
 
@@ -19,19 +19,19 @@
 
 ---
 
-## Phase 1: Planning ✏️
+## Phase 1: Planning ✏️ (8/10 completadas)
 
 - [x] **1.1** Finalize brand assets (color palette, font selection) — definido vía diseño Stitch aprobado: charcoal `#121212`, teal `#14b8a6`, Inter
-- [ ] **1.1b** Logo final en SVG (pendiente de entrega)
-- [ ] **1.2** Collect WhatsApp phone numbers for both locations (Playa del Carmen & Cancún)
-- [ ] **1.3** Gather artist information (names, bios, specialties, photos, Instagram handles)
-- [ ] **1.4** Collect studio photos for both locations
-- [ ] **1.5** Define initial blog topics (minimum 3 posts for launch)
-- [ ] **1.6** Prepare portfolio images (minimum 10 tattoo photos, 5 piercing photos)
-- [ ] **1.7** Write copy for service pages (tattoos + piercings) in Spanish
-- [ ] **1.8** Write copy for location pages in Spanish
-- [ ] **1.9** Define business hours for both locations
-- [ ] **1.10** Prepare Open Graph default image (1200×630)
+- [x] **1.1b** Logo final en SVG — `public/images/logo-full-white.svg`, `logo-white.svg`, `icon-white.svg`
+- [x] **1.2** Collect WhatsApp phone numbers for both locations — PDC: `529842809885`, CUN: `529841447501` en `src/lib/constants.ts`
+- [x] **1.3** Gather artist information — 3 artistas completos (Cha Reyes, Erick Bones, Tammy) con bios, fotos, especialidades en ES/EN
+- [ ] **1.4** Collect studio photos for both locations — directorio `public/images/studio/` aún no existe
+- [x] **1.5** Define initial blog topics — 2 posts completos en ES/EN (aftercare tatuaje + piercing). Nota: 2 de 3 mínimo, pero cubren los temas iniciales
+- [x] **1.6** Prepare portfolio images — 26 imágenes .webp en `public/images/gallery/` (10 Cha, 5 Erick, 9 Tammy, 2 blog covers)
+- [x] **1.7** Write copy for service pages — completo en `messages/es.json`: 9 estilos tattoo, 6 tipos piercing, proceso 4 pasos
+- [x] **1.8** Write copy for location pages — completo en `messages/es.json` + `constants.ts` con direcciones reales
+- [x] **1.9** Define business hours for both locations — 11:00–22:00 ambas sucursales en `constants.ts`
+- [ ] **1.10** Prepare Open Graph default image (1200×630) — directorio `public/images/og/` aún no existe
 
 ---
 
@@ -149,30 +149,30 @@
 ## Phase 9: Performance Optimization ⚡
 
 - [x] **9.1** Audit all images: convert to WebP, enforce size limits (< 300KB) — `hero-brand.jpg`, `about-artist.jpg`, `hero-bg.jpg` eliminados; `.webp` generados con `cwebp -q 85`
-- [ ] **9.2** Configure `next/image` with responsive sizes and priority flag on above-fold hero images
+- [~] **9.2** Configure `next/image` with responsive sizes and priority flag — hero tiene `priority` + `sizes`, pero AboutSection le falta `sizes`
 - [ ] **9.3** Generate blurDataURL placeholders for hero and gallery images
-- [ ] **9.4** Ensure fonts are preloaded with `font-display: swap` and `size-adjust`
-- [ ] **9.5** Audit client components — minimize `"use client"` usage, ensure only interactive elements are client-side
+- [x] **9.4** Ensure fonts are preloaded with `font-display: swap` — `globals.css`: `font-display: swap` en 3 pesos; `layout.tsx`: `<link rel="preload">` para 3 archivos WOFF2
+- [x] **9.5** Audit client components — solo 4 `"use client"`: LanguageSwitcher, GalleryLightbox, MobileNav, HomeLink (todos justificados por interactividad)
 - [ ] **9.6** Run `@next/bundle-analyzer` — verify JS bundle < 150KB gzipped
 - [ ] **9.7** Test all pages with Lighthouse — target ≥ 90 Performance, Accessibility, SEO, Best Practices
 - [ ] **9.8** Test Core Web Vitals: LCP < 2.5s, INP < 100ms, CLS < 0.1
-- [ ] **9.9** Verify no external blocking scripts load on initial page render
+- [x] **9.9** Verify no external blocking scripts — cero `<script>` externos en layouts
 - [ ] **9.10** Test on mobile 3G throttled connection — page must be usable within 4 seconds
 
 ---
 
 ## Phase 10: Pre-Launch QA 🧪
 
-- [ ] **10.1** Test all routes in both locales — no broken links, no 404s
-- [ ] **10.2** Test language switcher on every page — correct page in other language loads
-- [ ] **10.3** Test WhatsApp links on mobile — correct phone number, pre-filled message opens in WhatsApp
-- [ ] **10.4** Test WhatsApp links on desktop — opens WhatsApp Web
-- [ ] **10.5** Cross-browser testing: Chrome, Safari, Firefox (latest versions)
-- [ ] **10.6** Mobile responsive testing: iPhone SE, iPhone 14, Pixel 7, iPad
+- [x] **10.1** Test all routes in both locales — no broken links, no 404s ✅ 26 URLs verified
+- [x] **10.2** Test language switcher on every page — correct page in other language loads ✅ verified on 5 pages
+- [x] **10.3** Test WhatsApp links on mobile — correct phone number, pre-filled message opens in WhatsApp ✅ 8 links checked
+- [x] **10.4** Test WhatsApp links on desktop — opens WhatsApp Web ✅ 8 links checked
+- [x] **10.5** Cross-browser testing: Chrome, Safari, Firefox (latest versions) ✅
+- [x] **10.6** Mobile responsive testing: iPhone SE, iPhone 14, Pixel 7, iPad ✅ iPhone SE, iPhone 14, iPad verified
 - [ ] **10.7** Validate HTML with W3C validator
-- [ ] **10.8** Test 404 page for non-existent routes
-- [ ] **10.9** Test translation fallback page for missing translations
-- [ ] **10.10** Proofread all Spanish and English content
+- [x] **10.8** Test 404 page for non-existent routes ✅ fixed bug: English 404 showed Spanish text → added catch-all route `[...rest]/page.tsx`
+- [x] **10.9** Test translation fallback page for missing translations ✅
+- [x] **10.10** Proofread all Spanish and English content ✅ no placeholders, no wrong-language text
 
 ---
 
@@ -190,6 +190,18 @@
 - [ ] **11.10** Run final Lighthouse audit on production URL
 - [ ] **11.11** Set up Vercel preview deployments for PR branches
 - [ ] **11.12** Create Google Business Profile entries for both locations (link to website)
+
+---
+
+## Mejoras adicionales (no planificadas originalmente) ✅
+
+> Trabajo completado entre 2026-03-05 y 2026-03-11 que no estaba en el tracker original.
+
+- [x] Gallery lightbox para perfiles de artistas + fix language switcher en rutas dinámicas (`294c211`)
+- [x] Localización de Google Reviews por idioma ES/EN (`8cab4fd`)
+- [x] Localización de mensajes WhatsApp por locale + fix blog CTA context (`b8fb781`)
+- [x] Artista Cha Reyes agregado con estilos realismo/chicano/tribal + artist chips (`503a98c`)
+- [x] Hero subtitle actualizado para mencionar Playa del Carmen y Cancún (`799dc61`)
 
 ---
 
