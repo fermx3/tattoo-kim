@@ -35,6 +35,8 @@ export interface GoogleReviewData {
   text: string;
   date: string;
   profileUrl?: string;
+  photoUrl?: string;
+  location?: 'playa-del-carmen' | 'cancun';
 }
 
 export interface GoogleLocationRating {

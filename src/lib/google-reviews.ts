@@ -24,18 +24,21 @@ const FALLBACK_DATA: Record<string, GoogleLocationRating[]> = {
                     rating: 5,
                     text: 'Alejandro me atendió súper, la neta ni me dolió, fue bastante rápido y muy buen trabajo, ya quedé que regreso por otros trabajitos que tengo en mente! RECOMENDADO 100%',
                     date: '2026-01-13',
+                    photoUrl: 'https://lh3.googleusercontent.com/a-/ALV-UjW9LeZOQZn9pn9REFeU7MiVOmpKy9rOM4udNqxkxuz9cPlcvocI=s128-c0x00000000-cc-rp-mo-ba4',
                 },
                 {
                     author: 'Carlos eduardo Alejandro',
                     rating: 5,
                     text: 'Muchas gracias por mi tatuaje, el servicio impecable y gran atención de parte de Erick, recomendado!!',
                     date: '2025-11-23',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocLEjLLAEstd54CYbMaMGOYjG7-NYBT3TaitaepBjGsjU-QTiw=s128-c0x00000000-cc-rp-mo',
                 },
                 {
                     author: 'Ricardo',
                     rating: 5,
                     text: 'Súper recomendable, fui a hacerme un Micro dermal facial, con Tammy y me trato de la mejor manera posible, todo limpio e higiénico, amable y me explico todo el proceso con calma, la atención y el procedimiento realizado 1000/10, definitivamente volveré por otro piercing próximamente!',
                     date: '2026-01-27',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocJ063UkmUTHq3AFQisg4FFBDgpN6WfScKSm5ukuVHZgOjjppw=s128-c0x00000000-cc-rp-mo',
                 },
             ],
             profileUrl: GOOGLE_PROFILE_URLS['playa-del-carmen'],
@@ -50,18 +53,21 @@ const FALLBACK_DATA: Record<string, GoogleLocationRating[]> = {
                     rating: 5,
                     text: 'Muy a gusto y ameno el estudio, los trabajos excelentes ✨',
                     date: '2026-03-07',
+                    photoUrl: 'https://lh3.googleusercontent.com/a-/ALV-UjUSdTCbe2sAm5eFfvhlefuVsjMRStvjNM4vduEzyP-Ps3jk4XQ=s128-c0x00000000-cc-rp-mo',
                 },
                 {
                     author: 'Mariel BP',
                     rating: 5,
                     text: 'Excelente trato, higiene, profesionalismo de los chicos recomendado!!',
                     date: '2026-03-09',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocKJZV8fSoWMoEg799lHZRLpliT1yFuDAYtmpyjEDuQP1F-fyg=s128-c0x00000000-cc-rp-mo',
                 },
                 {
                     author: 'Vianney Alvarez',
                     rating: 5,
                     text: 'Excelente lugar, seguro y buen trato. Erick quien realiza las perforaciones, muy profesional para realizar su trabajo',
                     date: '2026-03-08',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocKbU0IGaaw3PxoHYhgMxAkrTMc1gOLihendFlzJfFfBRmWGRQ=s128-c0x00000000-cc-rp-mo',
                 },
             ],
             profileUrl: GOOGLE_PROFILE_URLS.cancun,
@@ -78,18 +84,21 @@ const FALLBACK_DATA: Record<string, GoogleLocationRating[]> = {
                     rating: 5,
                     text: 'Best tattoo shop in Mexico!! My family went and got tattoos!! It was my son\u2019s first tattoo! And they had so much patience with him and were so kind.',
                     date: '2025-12-26',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocJZHlTS76y1LcYjYCuS9KN1LltSTAkFYQu1YBz2Gpep-iNqPw=s128-c0x00000000-cc-rp-mo',
                 },
                 {
                     author: 'Pamela Martin',
                     rating: 5,
                     text: 'Alejandro is AMAZING\u2026a true artist!!!! He transformed my and my husband\u2019s visions for our tattoos into MASTERPIECES. Shop was clean and everything used was sterile.',
                     date: '2025-12-09',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocLvl2LYJT1zSmSXeJ-CYNzROKBAFzO6sL686n3gd7-ssyzibQ=s128-c0x00000000-cc-rp-mo',
                 },
                 {
                     author: 'Klara Schmidt',
                     rating: 5,
                     text: 'We had an amazing experience here at Tattoo Kim! We messaged Monserrat and one day later we got an appointment where we talked about designs and a day later we got tattooed. She answered all my questions and overall it felt really professional.',
                     date: '2025-01-12',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocKB9GtFd3P5AQ2kML-giNU-ZGQaENpdyf4b4840JAiON9wTAA=s128-c0x00000000-cc-rp-mo',
                 },
             ],
             profileUrl: GOOGLE_PROFILE_URLS['playa-del-carmen'],
@@ -104,18 +113,21 @@ const FALLBACK_DATA: Record<string, GoogleLocationRating[]> = {
                     rating: 5,
                     text: 'I had a awesome time with Alessandro, I just walk-in and he took me in. Ask good question for my idea and really good on the line work. Highly recommended!',
                     date: '2026-03-09',
+                    photoUrl: 'https://lh3.googleusercontent.com/a/ACg8ocKjPW_uQuIJAvL6xWAn0AXPd2hoBVcNIzi3XDNdqhmU_EsToT4=s128-c0x00000000-cc-rp-mo',
                 },
                 {
                     author: 'Fabio Bacchetti',
                     rating: 5,
                     text: 'The last day of my holiday in Cancun I decided to make my a tattoo and I couldn\'t do a better choice. I really appreciate the tattoo and the kind of work of the guys. Highly recommend',
                     date: '2026-03-06',
+                    photoUrl: 'https://lh3.googleusercontent.com/a-/ALV-UjW9SG7FvqDmtWxVFtEagtphV4xkpZdYpfJtlL-SUuDT4m8C_CCz=s128-c0x00000000-cc-rp-mo',
                 },
                 {
                     author: 'Nallely Cortez',
                     rating: 5,
                     text: 'The study was very pleasant and enjoyable, the work was excellent ✨',
                     date: '2026-03-07',
+                    photoUrl: 'https://lh3.googleusercontent.com/a-/ALV-UjUSdTCbe2sAm5eFfvhlefuVsjMRStvjNM4vduEzyP-Ps3jk4XQ=s128-c0x00000000-cc-rp-mo',
                 },
             ],
             profileUrl: GOOGLE_PROFILE_URLS.cancun,
@@ -127,6 +139,7 @@ interface PlacesApiReview {
     authorAttribution?: {
         displayName?: string;
         uri?: string;
+        photoUri?: string;
     };
     rating?: number;
     text?: { text?: string };
@@ -147,6 +160,7 @@ function mapApiReview(review: PlacesApiReview): GoogleReviewData {
         text: review.text?.text ?? '',
         date: review.publishTime ?? '',
         profileUrl: review.authorAttribution?.uri,
+        photoUrl: review.authorAttribution?.photoUri,
     };
 }
 
@@ -215,7 +229,9 @@ export function combineRatings(locations: GoogleLocationRating[]): CombinedGoogl
     const weightedScore =
         locations.reduce((sum, l) => sum + l.score * l.totalReviews, 0) / totalReviews;
 
-    const reviews = locations.flatMap((l) => l.reviews);
+    const reviews = locations.flatMap((l) =>
+        l.reviews.map((r) => ({ ...r, location: l.location })),
+    );
 
     return {
         score: Math.round(weightedScore * 10) / 10,

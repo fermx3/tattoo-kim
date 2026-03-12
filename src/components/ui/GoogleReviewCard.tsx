@@ -1,6 +1,11 @@
 import GoogleStars from '@/components/ui/GoogleStars';
 import type { GoogleReviewData } from '@/types';
 
+const LOCATION_LABELS: Record<string, string> = {
+    'playa-del-carmen': 'Playa del Carmen',
+    cancun: 'Cancún',
+};
+
 interface GoogleReviewCardProps {
     review: GoogleReviewData;
 }
@@ -24,10 +29,29 @@ export default function GoogleReviewCard({ review }: GoogleReviewCardProps) {
                 &ldquo;{review.text}&rdquo;
             </p>
 
-            {/* Author */}
-            <p className="text-[#14b8a6] font-black uppercase tracking-widest text-xs">
-                — {review.author}
-            </p>
+            {/* Author + location */}
+            <div className="flex items-center gap-3">
+                {review.photoUrl && (
+                    <img
+                        src={review.photoUrl}
+                        alt={review.author}
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-full object-cover"
+                        referrerPolicy="no-referrer"
+                    />
+                )}
+                <div className="flex flex-col gap-1">
+                    <p className="text-[#14b8a6] font-black uppercase tracking-widest text-xs">
+                        — {review.author}
+                    </p>
+                    {review.location && (
+                        <p className="text-slate-500 text-[10px] uppercase tracking-wider">
+                            {LOCATION_LABELS[review.location] ?? review.location}
+                        </p>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
