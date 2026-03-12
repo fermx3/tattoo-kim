@@ -21,15 +21,15 @@ export const LOCATIONS: StudioLocation[] = [
         name: 'Playa del Carmen',
         address: 'Av 30 Esquina Calle 72, Colonia Gonzalo Guerrero, Playa del Carmen, Q.R.',
         phone: WHATSAPP_NUMBERS['playa-del-carmen'],
-        mapUrl: 'https://maps.app.goo.gl/Jptg6VLaGabGqM7a8',
+        mapUrl: 'https://maps.app.goo.gl/Mc34X7TrCtGYE5Cv7',
         hours: {
             weekdays: '11:00 - 22:00',
             saturday: '11:00 - 22:00',
             sunday: '11:00 - 22:00',
         },
         coords: {
-            lat: 20.6296, // TODO: confirm
-            lng: -87.0739,
+            lat: 20.6460009,
+            lng: -87.0649157,
         },
     },
     {
@@ -37,15 +37,15 @@ export const LOCATIONS: StudioLocation[] = [
         name: 'Cancún',
         address: 'Av. Tulúm 232, SMZ 4, 77500 Cancún, Q.R.',
         phone: WHATSAPP_NUMBERS.cancun,
-        mapUrl: 'https://maps.app.goo.gl/EpnExGCyz9RiJgBK9', // TODO: confirm
+        mapUrl: 'https://maps.app.goo.gl/doM4jcHPGE7zWTK77',
         hours: {
             weekdays: '11:00 - 22:00',
             saturday: '11:00 - 22:00',
             sunday: '11:00 - 22:00',
         },
         coords: {
-            lat: 21.1619, // TODO: confirm
-            lng: -86.8515,
+            lat: 21.1511342,
+            lng: -86.8244528,
         },
     },
 ];
