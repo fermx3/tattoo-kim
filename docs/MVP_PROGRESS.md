@@ -142,7 +142,7 @@
 - [x] **8.8** Implement JSON-LD: `BreadcrumbList` on all pages
 - [x] **8.9** Sitemap y robots.txt — Next.js App Router nativo (`src/app/sitemap.ts`, `src/app/robots.ts`)
 - [x] **8.10** Verify all pages have unique `<title>` and `<meta description>` — confirmado en build
-- [ ] **8.11** Test structured data with Google Rich Results Test
+- [x] **8.11** Test structured data with Google Rich Results Test ✅ 0 errors: TattooParlor, Article, Person, BreadcrumbList all valid
 
 ---
 
