@@ -10,6 +10,7 @@ import { buildAlternates } from '@/lib/seo';
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonld';
 import { SITE_URL } from '@/lib/constants';
 import JsonLd from '@/components/ui/JsonLd';
+import blurPlaceholders from '@/lib/blur-placeholders.json';
 import type { Locale } from '@/types';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -79,6 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
                     priority
                     sizes="100vw"
                     className="object-cover"
+                    {...((blurPlaceholders as Record<string, string>)[post.image] ? { placeholder: 'blur' as const, blurDataURL: (blurPlaceholders as Record<string, string>)[post.image] } : {})}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent" />
             </div>

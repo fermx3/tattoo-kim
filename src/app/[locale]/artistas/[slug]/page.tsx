@@ -11,6 +11,7 @@ import { buildPersonJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonld';
 import { SITE_URL } from '@/lib/constants';
 import JsonLd from '@/components/ui/JsonLd';
 import GalleryLightbox from '@/components/ui/GalleryLightbox';
+import blurPlaceholders from '@/lib/blur-placeholders.json';
 import type { Locale } from '@/types';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -91,6 +92,7 @@ export default async function ArtistDetailPage({ params }: Props) {
                                 priority
                                 sizes="320px"
                                 className="object-cover"
+                                {...((blurPlaceholders as Record<string, string>)[artist.image] ? { placeholder: 'blur' as const, blurDataURL: (blurPlaceholders as Record<string, string>)[artist.image] } : {})}
                             />
                         </div>
 
