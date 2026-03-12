@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import blurPlaceholders from '@/lib/blur-placeholders.json';
 
 type GalleryImage = { src: string; alt: string };
 
@@ -47,6 +48,10 @@ export default function GalleryLightbox({ images }: { images: GalleryImage[] }) 
                             height={600}
                             sizes="(max-width: 768px) 50vw, 33vw"
                             className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
+                            {...(blurPlaceholders[img.src as keyof typeof blurPlaceholders] ? {
+                                placeholder: 'blur' as const,
+                                blurDataURL: blurPlaceholders[img.src as keyof typeof blurPlaceholders],
+                            } : {})}
                         />
                     </button>
                 ))}

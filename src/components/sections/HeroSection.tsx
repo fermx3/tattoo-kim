@@ -4,6 +4,7 @@ import CTAButton from '@/components/ui/CTAButton';
 import { Link } from '@/i18n/navigation';
 import GoogleRatingBadge from '@/components/ui/GoogleRatingBadge';
 import type { CombinedGoogleRating } from '@/types';
+import blurPlaceholders from '@/lib/blur-placeholders.json';
 
 interface HeroSectionProps {
     googleRating: CombinedGoogleRating;
@@ -24,6 +25,8 @@ export default function HeroSection({ googleRating, profileUrl }: HeroSectionPro
                 className="object-cover object-right md:object-center scale-[1.02] opacity-90"
                 priority
                 sizes="100vw"
+                placeholder="blur"
+                blurDataURL={blurPlaceholders['/images/hero-brand.webp']}
             />
             {/* Gradient overlays to handle the white/dark split and ensure text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-[#121212]/90" />

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import CTAButton from '@/components/ui/CTAButton';
+import blurPlaceholders from '@/lib/blur-placeholders.json';
 
 interface StatProps {
     value: string;
@@ -78,6 +79,8 @@ export default function AboutSection({ googleScore }: AboutSectionProps) {
                                 fill
                                 className="object-cover object-center"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
+                                placeholder="blur"
+                                blurDataURL={blurPlaceholders['/images/about-artist.webp']}
                             />
                             {/* Subtle overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/30 to-transparent" />

@@ -181,6 +181,7 @@ export default async function TattoosPage({ params }: Props) {
                                         width={600}
                                         height={600}
                                         className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                                        sizes="(max-width: 768px) 50vw, 33vw"
                                     />
                                     {/* Location badge */}
                                     <span className="absolute top-2 right-2 bg-black/60 text-[#14b8a6] text-[10px] font-black uppercase tracking-wider px-2 py-1">

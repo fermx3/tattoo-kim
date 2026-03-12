@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
 import createNextIntlPlugin from 'next-intl/plugin';
+import bundleAnalyzer from '@next/bundle-analyzer';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
@@ -29,4 +30,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withNextIntl(withMDX(nextConfig));
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default withBundleAnalyzer(withNextIntl(withMDX(nextConfig)));
