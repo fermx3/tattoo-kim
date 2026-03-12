@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const enSlug = locale === 'en' ? slug : (translatedSlug ?? slug);
 
     return {
-        title: `${post.title} | Tattoo Kim`,
+        title: post.title,
         description: post.description,
         alternates: buildAlternates(locale, `/blog/${esSlug}`, `/blog/${enSlug}`),
         openGraph: {

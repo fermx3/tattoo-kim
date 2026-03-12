@@ -21,9 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const t = await getTranslations({ locale, namespace: 'home' });
 
     return {
-        title: locale === 'es'
-            ? 'Tattoo Kim | Arte en la Piel — Playa del Carmen & Cancún'
-            : 'Tattoo Kim | Art on Skin — Playa del Carmen & Cancún',
+        title: {
+            absolute: locale === 'es'
+                ? 'Tattoo Kim | Arte en la Piel — Playa del Carmen & Cancún'
+                : 'Tattoo Kim | Art on Skin — Playa del Carmen & Cancún',
+        },
         description: t('hero_subtitle'),
         alternates: buildAlternates(locale, '', ''),
         openGraph: {

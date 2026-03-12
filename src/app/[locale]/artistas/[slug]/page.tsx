@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : `Meet ${artist.name}, ${artist.role} at Tattoo Kim. Specializing in ${artist.specialties.join(', ')}.`;
 
     return {
-        title: `${artist.name} — ${artist.role} | Tattoo Kim`,
+        title: `${artist.name} — ${artist.role}`,
         description,
         alternates: buildAlternates(locale, `/artistas/${slug}`, `/artists/${slug}`),
         openGraph: {
