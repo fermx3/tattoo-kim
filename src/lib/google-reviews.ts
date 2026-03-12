@@ -16,57 +16,109 @@ const FALLBACK_DATA: Record<string, GoogleLocationRating[]> = {
     es: [
         {
             location: 'playa-del-carmen',
-            score: 4.9,
-            totalReviews: 127,
+            score: 5,
+            totalReviews: 390,
             reviews: [
                 {
-                    author: 'Valentina R.',
+                    author: 'Gustavo Lira Alejando',
                     rating: 5,
-                    text: 'Kim transformó mi idea en algo mucho más hermoso de lo que imaginé. El detalle y la dedicación son incomparables.',
-                    date: '2025-01-15',
+                    text: 'Alejandro me atendió súper, la neta ni me dolió, fue bastante rápido y muy buen trabajo, ya quedé que regreso por otros trabajitos que tengo en mente! RECOMENDADO 100%',
+                    date: '2026-01-13',
                 },
                 {
-                    author: 'Diego M.',
+                    author: 'Carlos eduardo Alejandro',
                     rating: 5,
-                    text: 'El ambiente del estudio te hace sentir seguro y en buenas manos desde el primer momento.',
-                    date: '2025-02-10',
+                    text: 'Muchas gracias por mi tatuaje, el servicio impecable y gran atención de parte de Erick, recomendado!!',
+                    date: '2025-11-23',
                 },
                 {
-                    author: 'Sofía L.',
+                    author: 'Ricardo',
                     rating: 5,
-                    text: 'Ya llevo tres tatuajes con Kim y cada vez supera al anterior. Es difícil ir a otro lugar.',
-                    date: '2025-03-05',
+                    text: 'Súper recomendable, fui a hacerme un Micro dermal facial, con Tammy y me trato de la mejor manera posible, todo limpio e higiénico, amable y me explico todo el proceso con calma, la atención y el procedimiento realizado 1000/10, definitivamente volveré por otro piercing próximamente!',
+                    date: '2026-01-27',
                 },
             ],
             profileUrl: GOOGLE_PROFILE_URLS['playa-del-carmen'],
+        },
+        {
+            location: 'cancun',
+            score: 5,
+            totalReviews: 15,
+            reviews: [
+                {
+                    author: 'Nallely Cortez',
+                    rating: 5,
+                    text: 'Muy a gusto y ameno el estudio, los trabajos excelentes ✨',
+                    date: '2026-03-07',
+                },
+                {
+                    author: 'Mariel BP',
+                    rating: 5,
+                    text: 'Excelente trato, higiene, profesionalismo de los chicos recomendado!!',
+                    date: '2026-03-09',
+                },
+                {
+                    author: 'Vianney Alvarez',
+                    rating: 5,
+                    text: 'Excelente lugar, seguro y buen trato. Erick quien realiza las perforaciones, muy profesional para realizar su trabajo',
+                    date: '2026-03-08',
+                },
+            ],
+            profileUrl: GOOGLE_PROFILE_URLS.cancun,
         },
     ],
     en: [
         {
             location: 'playa-del-carmen',
-            score: 4.9,
-            totalReviews: 127,
+            score: 5,
+            totalReviews: 390,
             reviews: [
                 {
-                    author: 'Valentina R.',
+                    author: 'Tiana Carter',
                     rating: 5,
-                    text: 'Kim turned my idea into something far more beautiful than I ever imagined. The detail and dedication are unmatched.',
-                    date: '2025-01-15',
+                    text: 'Best tattoo shop in Mexico!! My family went and got tattoos!! It was my son\u2019s first tattoo! And they had so much patience with him and were so kind.',
+                    date: '2025-12-26',
                 },
                 {
-                    author: 'Diego M.',
+                    author: 'Pamela Martin',
                     rating: 5,
-                    text: 'The studio atmosphere makes you feel safe and in good hands from the very first moment.',
-                    date: '2025-02-10',
+                    text: 'Alejandro is AMAZING\u2026a true artist!!!! He transformed my and my husband\u2019s visions for our tattoos into MASTERPIECES. Shop was clean and everything used was sterile.',
+                    date: '2025-12-09',
                 },
                 {
-                    author: 'Sofía L.',
+                    author: 'Klara Schmidt',
                     rating: 5,
-                    text: "I already have three tattoos by Kim and each one surpasses the last. It's hard to go anywhere else.",
-                    date: '2025-03-05',
+                    text: 'We had an amazing experience here at Tattoo Kim! We messaged Monserrat and one day later we got an appointment where we talked about designs and a day later we got tattooed. She answered all my questions and overall it felt really professional.',
+                    date: '2025-01-12',
                 },
             ],
             profileUrl: GOOGLE_PROFILE_URLS['playa-del-carmen'],
+        },
+        {
+            location: 'cancun',
+            score: 5,
+            totalReviews: 15,
+            reviews: [
+                {
+                    author: 'pascal thibault-desparois',
+                    rating: 5,
+                    text: 'I had a awesome time with Alessandro, I just walk-in and he took me in. Ask good question for my idea and really good on the line work. Highly recommended!',
+                    date: '2026-03-09',
+                },
+                {
+                    author: 'Fabio Bacchetti',
+                    rating: 5,
+                    text: 'The last day of my holiday in Cancun I decided to make my a tattoo and I couldn\'t do a better choice. I really appreciate the tattoo and the kind of work of the guys. Highly recommend',
+                    date: '2026-03-06',
+                },
+                {
+                    author: 'Nallely Cortez',
+                    rating: 5,
+                    text: 'The study was very pleasant and enjoyable, the work was excellent ✨',
+                    date: '2026-03-07',
+                },
+            ],
+            profileUrl: GOOGLE_PROFILE_URLS.cancun,
         },
     ],
 };
@@ -156,7 +208,7 @@ export async function fetchAllGoogleReviews(locale: string = 'es'): Promise<Goog
 
 export function combineRatings(locations: GoogleLocationRating[]): CombinedGoogleRating {
     if (locations.length === 0) {
-        return { score: 4.9, totalReviews: 127, reviews: [] };
+        return { score: 5, totalReviews: 405, reviews: [] };
     }
 
     const totalReviews = locations.reduce((sum, l) => sum + l.totalReviews, 0);
