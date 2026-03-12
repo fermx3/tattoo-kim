@@ -178,18 +178,18 @@
 
 ## Phase 11: Deployment 🚀
 
-- [ ] **11.1** Create Vercel project and connect Git repository
-- [ ] **11.2** Configure custom domain `www.tattookim.com.mx` in Vercel
-- [ ] **11.3** Set up DNS records (CNAME or Vercel nameservers)
-- [ ] **11.4** Verify SSL certificate is active
-- [ ] **11.5** Deploy to production from `main` branch
-- [ ] **11.6** Verify sitemap.xml accessible at `www.tattookim.com.mx/sitemap.xml`
-- [ ] **11.7** Verify robots.txt accessible at `www.tattookim.com.mx/robots.txt`
-- [ ] **11.8** Submit sitemap to Google Search Console
-- [ ] **11.9** Submit sitemap to Bing Webmaster Tools
-- [ ] **11.10** Run final Lighthouse audit on production URL
-- [ ] **11.11** Set up Vercel preview deployments for PR branches
-- [ ] **11.12** Create Google Business Profile entries for both locations (link to website)
+- [x] **11.1** Create Vercel project and connect Git repository ✅ deployed on Vercel
+- [x] **11.2** Configure custom domain `www.tattookim.com.mx` in Vercel ✅ domain active
+- [x] **11.3** Set up DNS records (CNAME or Vercel nameservers) ✅ resolves correctly
+- [x] **11.4** Verify SSL certificate is active ✅ Let's Encrypt, CN=www.tattookim.com.mx
+- [x] **11.5** Deploy to production from `main` branch ✅ master branch live
+- [x] **11.6** Verify sitemap.xml accessible at `www.tattookim.com.mx/sitemap.xml` ✅ all ES/EN routes
+- [x] **11.7** Verify robots.txt accessible at `www.tattookim.com.mx/robots.txt` ✅ Allow: /, Sitemap referenced
+- [ ] **11.8** Submit sitemap to Google Search Console — requires owner's Google account
+- [ ] **11.9** Submit sitemap to Bing Webmaster Tools — requires owner's Microsoft account
+- [x] **11.10** Run final Lighthouse audit on production URL ✅ Perf 98, A11y 96, SEO 100, BP 77
+- [x] **11.11** Set up Vercel preview deployments for PR branches ✅ automatic on Vercel
+- [ ] **11.12** Create Google Business Profile entries for both locations (link to website) — requires owner's Google account
 
 ---
 
