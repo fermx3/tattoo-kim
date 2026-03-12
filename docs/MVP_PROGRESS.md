@@ -185,11 +185,11 @@
 - [x] **11.5** Deploy to production from `main` branch ✅ master branch live
 - [x] **11.6** Verify sitemap.xml accessible at `www.tattookim.com.mx/sitemap.xml` ✅ all ES/EN routes
 - [x] **11.7** Verify robots.txt accessible at `www.tattookim.com.mx/robots.txt` ✅ Allow: /, Sitemap referenced
-- [ ] **11.8** Submit sitemap to Google Search Console — requires owner's Google account
-- [ ] **11.9** Submit sitemap to Bing Webmaster Tools — requires owner's Microsoft account
+- [~] **11.8** ~~Submit sitemap to Google Search Console~~ — deferred post-launch
+- [~] **11.9** ~~Submit sitemap to Bing Webmaster Tools~~ — deferred post-launch
 - [x] **11.10** Run final Lighthouse audit on production URL ✅ Perf 98, A11y 96, SEO 100, BP 77
 - [x] **11.11** Set up Vercel preview deployments for PR branches ✅ automatic on Vercel
-- [ ] **11.12** Create Google Business Profile entries for both locations (link to website) — requires owner's Google account
+- [~] **11.12** ~~Create Google Business Profile entries for both locations~~ — deferred post-launch
 
 ---
 
