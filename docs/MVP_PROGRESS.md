@@ -157,7 +157,7 @@
 - [x] **9.7** Test all pages with Lighthouse ✅ Production: Perf 98, A11y 96, SEO 100, BP 77 (BP limited by Google Ads gtag cookies)
 - [x] **9.8** Test Core Web Vitals ✅ Production: LCP 2.3s, FCP 1.3s, TBT 60ms, CLS 0.003
 - [x] **9.9** Verify no external blocking scripts — cero `<script>` externos en layouts
-- [ ] **9.10** Test on mobile 3G throttled connection — page must be usable within 4 seconds
+- [x] **9.10** Test on mobile 3G throttled connection ✅ FCP 3.7s, LCP 3.7s, Speed Index 3.8s — usable within 4s
 
 ---
 
