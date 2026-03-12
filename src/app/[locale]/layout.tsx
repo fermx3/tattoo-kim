@@ -30,7 +30,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     return (
         <NextIntlClientProvider messages={messages}>
             <Header locale={locale as 'es' | 'en'} />
-            <main>{children}</main>
+            {children}
             <Footer locale={locale as 'es' | 'en'} />
             <WhatsAppButton location="playa-del-carmen" variant="floating" locale={locale} />
         </NextIntlClientProvider>

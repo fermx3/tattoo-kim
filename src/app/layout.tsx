@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { getLocale } from 'next-intl/server';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
@@ -22,14 +23,13 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale?: string }>;
 };
 
-export default async function RootLayout({ children, params }: Props) {
-  const { locale } = await params;
+export default async function RootLayout({ children }: Props) {
+  const locale = await getLocale();
 
   return (
-    <html lang={locale ?? 'es'} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link
           rel="preload"

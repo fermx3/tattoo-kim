@@ -169,7 +169,7 @@
 - [x] **10.4** Test WhatsApp links on desktop — opens WhatsApp Web ✅ 8 links checked
 - [x] **10.5** Cross-browser testing: Chrome, Safari, Firefox (latest versions) ✅
 - [x] **10.6** Mobile responsive testing: iPhone SE, iPhone 14, Pixel 7, iPad ✅ iPhone SE, iPhone 14, iPad verified
-- [ ] **10.7** Validate HTML with W3C validator
+- [x] **10.7** Validate HTML with W3C validator ✅ 0 errors on 6 pages (ES+EN homepage, services, artist, blog, contact)
 - [x] **10.8** Test 404 page for non-existent routes ✅ fixed bug: English 404 showed Spanish text → added catch-all route `[...rest]/page.tsx`
 - [x] **10.9** Test translation fallback page for missing translations ✅
 - [x] **10.10** Proofread all Spanish and English content ✅ no placeholders, no wrong-language text

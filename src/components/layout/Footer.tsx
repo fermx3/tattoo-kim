@@ -55,9 +55,9 @@ export default function Footer({ locale }: FooterProps) {
 
                     {/* Schedule */}
                     <div>
-                        <h5 className="text-white font-black mb-6 uppercase tracking-[0.2em] text-[10px]">
+                        <h3 className="text-white font-black mb-6 uppercase tracking-[0.2em] text-[10px]">
                             {t.schedule}
-                        </h5>
+                        </h3>
                         <ul className="text-slate-500 font-light text-sm space-y-3">
                             <li>
                                 <span className="text-white font-medium inline-block w-28">
@@ -70,9 +70,9 @@ export default function Footer({ locale }: FooterProps) {
 
                     {/* Locations */}
                     <div>
-                        <h5 className="text-white font-black mb-6 uppercase tracking-[0.2em] text-[10px]">
+                        <h3 className="text-white font-black mb-6 uppercase tracking-[0.2em] text-[10px]">
                             {t.location}
-                        </h5>
+                        </h3>
                         <ul className="text-slate-500 font-light text-sm space-y-4">
                             <li>
                                 <p className="text-white font-medium mb-1">Playa del Carmen</p>

@@ -52,7 +52,7 @@ export default async function HomePage({ params }: Props) {
     ];
 
     return (
-        <>
+        <main>
             <JsonLd data={jsonLdData} />
             <HeroSection googleRating={combined} profileUrl={profileUrl} />
             <TestimonialSection reviews={googleData} combined={combined} profileUrl={profileUrl} />
@@ -60,6 +60,6 @@ export default async function HomePage({ params }: Props) {
             <AboutSection googleScore={combined.score} />
             <LocationsSection />
             <FinalCTASection />
-        </>
+        </main>
     );
 }
