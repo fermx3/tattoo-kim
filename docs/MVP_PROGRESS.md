@@ -3,7 +3,7 @@
 > Track progress by checking boxes as tasks are completed.
 > Dependencies are noted inline with → arrows.
 
-**Última actualización:** 2026-03-12 (Phase 10 QA: 8/10 completadas, bugs 404 y títulos duplicados corregidos)
+**Última actualización:** 2026-03-23 (OG image añadida, imágenes de about y blog actualizadas)
 
 ---
 
@@ -31,7 +31,7 @@
 - [x] **1.7** Write copy for service pages — completo en `messages/es.json`: 9 estilos tattoo, 6 tipos piercing, proceso 4 pasos
 - [x] **1.8** Write copy for location pages — completo en `messages/es.json` + `constants.ts` con direcciones reales
 - [x] **1.9** Define business hours for both locations — 11:00–22:00 ambas sucursales en `constants.ts`
-- [ ] **1.10** Prepare Open Graph default image (1200×630) — directorio `public/images/og/` aún no existe
+- [x] **1.10** Prepare Open Graph default image (1200×630) ✅ `public/images/og/default.webp` (1200×630, 41KB), configurada como default en root layout y homepage
 
 ---
 

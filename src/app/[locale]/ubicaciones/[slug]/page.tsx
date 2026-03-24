@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import PageHero from '@/components/ui/PageHero';
 import JsonLd from '@/components/ui/JsonLd';
 import { LOCATIONS, SITE_URL } from '@/lib/constants';
@@ -8,6 +9,17 @@ import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { buildAlternates } from '@/lib/seo';
 import { buildLocalBusinessJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonld';
 import Link from 'next/link';
+
+const STUDIO_IMAGES: Record<string, { src: string; alt: string }[]> = {
+    cancun: [
+        { src: '/images/studio/cancun-exterior-2.webp', alt: 'Fachada Tattoo Kim Cancún' },
+        { src: '/images/studio/cancun-interior-lounge.webp', alt: 'Sala de espera Tattoo Kim Cancún' },
+        { src: '/images/studio/cancun-interior-piercing.webp', alt: 'Zona de piercing Tattoo Kim Cancún' },
+        { src: '/images/studio/cancun-exterior-3.webp', alt: 'Entrada Tattoo Kim Cancún' },
+        { src: '/images/studio/cancun-interior-recepcion.webp', alt: 'Recepción Tattoo Kim Cancún' },
+        { src: '/images/studio/cancun-interior-piercing-2.webp', alt: 'Área de piercing Tattoo Kim Cancún' },
+    ],
+};
 
 type Props = {
     params: Promise<{ locale: string; slug: string }>;
@@ -125,6 +137,30 @@ export default async function LocationPage({ params }: Props) {
                     </div>
                 </div>
             </section>
+
+            {/* Studio gallery */}
+            {STUDIO_IMAGES[slug] && STUDIO_IMAGES[slug].length > 0 && (
+                <section className="py-20 px-6 border-t border-white/5">
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-[10px] font-black uppercase tracking-[0.25em] text-[#14b8a6] mb-10 text-center">
+                            {t('gallery_title')}
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {STUDIO_IMAGES[slug].map((img) => (
+                                <div key={img.src} className="relative aspect-[4/3] overflow-hidden group">
+                                    <Image
+                                        src={img.src}
+                                        alt={img.alt}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* Other location callout */}
             <section className="py-16 px-6 border-t border-white/5">

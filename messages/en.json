@@ -156,7 +156,8 @@
         "map_cta": "View on Google Maps",
         "whatsapp_cta": "Book at This Studio",
         "other_location": "Also at",
-        "visit_us": "Visit Us"
+        "visit_us": "Visit Us",
+        "gallery_title": "Explore Our Studio"
     },
     "contact": {
         "label": "Contact",
