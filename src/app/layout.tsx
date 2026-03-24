@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Tattoo Kim',
     locale: 'es_MX',
+    images: [
+      {
+        url: '/images/og/default.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Kim Tattoo — Studio Tattoo & Piercing en Playa del Carmen y Cancún',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 ? 'Tattoo Kim | Arte en la Piel'
                 : 'Tattoo Kim | Art on Skin',
             description: t('hero_subtitle'),
-            images: [{ url: `${SITE_URL}/images/hero-brand.webp` }],
+            images: [{ url: `${SITE_URL}/images/og/default.webp`, width: 1200, height: 630, alt: 'Kim Tattoo — Studio Tattoo & Piercing' }],
         },
     };
 }
