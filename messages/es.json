@@ -46,7 +46,10 @@
         "final_cta_label": "¿Listo para tu próxima pieza?",
         "final_cta_title": "Tu Historia, Nuestra Tinta",
         "final_cta_desc": "Contáctanos por WhatsApp y cuéntanos tu idea. Te guiamos en cada paso del proceso.",
-        "final_cta_button": "Iniciar Conversación"
+        "final_cta_button": "Iniciar Conversación",
+        "portfolio_label": "Nuestro Trabajo",
+        "portfolio_title": "Portfolio de Tatuajes",
+        "portfolio_view_artists": "Ver todos los artistas"
     },
     "common": {
         "whatsapp_cta": "Agenda tu Cita",

@@ -46,7 +46,10 @@
         "final_cta_label": "Ready for your next piece?",
         "final_cta_title": "Your Story, Our Ink",
         "final_cta_desc": "Contact us on WhatsApp and share your idea. We guide you through every step of the process.",
-        "final_cta_button": "Start a Conversation"
+        "final_cta_button": "Start a Conversation",
+        "portfolio_label": "Our Work",
+        "portfolio_title": "Tattoo Portfolio",
+        "portfolio_view_artists": "View all artists"
     },
     "common": {
         "whatsapp_cta": "Book Your Appointment",

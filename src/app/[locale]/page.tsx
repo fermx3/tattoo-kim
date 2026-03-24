@@ -5,6 +5,7 @@ import TestimonialSection from '@/components/sections/TestimonialSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import AboutSection from '@/components/sections/AboutSection';
 import LocationsSection from '@/components/sections/LocationsSection';
+import GallerySection from '@/components/sections/GallerySection';
 import FinalCTASection from '@/components/sections/FinalCTASection';
 import JsonLd from '@/components/ui/JsonLd';
 import { fetchAllGoogleReviews, combineRatings } from '@/lib/google-reviews';
@@ -56,6 +57,7 @@ export default async function HomePage({ params }: Props) {
             <JsonLd data={jsonLdData} />
             <HeroSection googleRating={combined} profileUrl={profileUrl} />
             <TestimonialSection reviews={googleData} combined={combined} profileUrl={profileUrl} />
+            <GallerySection />
             <ServicesSection />
             <AboutSection googleScore={combined.score} />
             <LocationsSection />
