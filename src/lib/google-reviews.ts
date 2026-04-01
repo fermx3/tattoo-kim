@@ -178,7 +178,7 @@ async function fetchLocationReviews(
             'X-Goog-Api-Key': API_KEY,
             'X-Goog-FieldMask': 'rating,userRatingCount,reviews',
         },
-        next: { tags: [`google-reviews-${locale}`] },
+        next: { tags: [`google-reviews-${locale}`], revalidate: 2592000 },
     });
 
     if (!res.ok) {
