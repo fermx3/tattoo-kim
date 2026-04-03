@@ -60,7 +60,7 @@ export default function GalleryLightbox({ images }: { images: GalleryImage[] }) 
             {/* Lightbox modal */}
             {activeIndex !== null && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+                    className="fixed inset-0 z-[100000] flex items-center justify-center bg-black/90"
                     onClick={close}
                 >
                     {/* Close button */}
