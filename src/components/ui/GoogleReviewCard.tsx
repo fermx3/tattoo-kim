@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import GoogleStars from '@/components/ui/GoogleStars';
 import type { GoogleReviewData } from '@/types';
 
@@ -32,11 +33,12 @@ export default function GoogleReviewCard({ review }: GoogleReviewCardProps) {
             {/* Author + location */}
             <div className="flex items-center gap-3">
                 {review.photoUrl && (
-                    <img
+                    <Image
                         src={review.photoUrl}
                         alt={review.author}
                         width={32}
                         height={32}
+                        sizes="32px"
                         className="w-8 h-8 rounded-full object-cover"
                         referrerPolicy="no-referrer"
                     />

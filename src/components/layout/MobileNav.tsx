@@ -1,8 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from '@/i18n/navigation';
+
+// Detecta la hidratación sin setState dentro de un efecto: en servidor el
+// snapshot es false, en cliente true. Necesario porque los portales requieren
+// document. Ver react-hooks/set-state-in-effect.
+const subscribeToNothing = () => () => {};
+const getSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 interface MobileNavProps {
     links: { href: string; label: string }[];
@@ -11,9 +18,7 @@ interface MobileNavProps {
 
 export default function MobileNav({ links, locale }: MobileNavProps) {
     const [open, setOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => { setMounted(true); }, []);
+    const mounted = useSyncExternalStore(subscribeToNothing, getSnapshot, getServerSnapshot);
 
     useEffect(() => {
         document.body.style.overflow = open ? 'hidden' : '';
