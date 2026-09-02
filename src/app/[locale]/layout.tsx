@@ -34,11 +34,20 @@ export default async function LocaleLayout({ children, params }: Props) {
     return (
         <html lang={locale} suppressHydrationWarning>
             <head>
-                {/* Sólo se precarga bold: es el peso que resuelve el <h1> del hero,
-                    que es el elemento LCP. Precargar los tres competía por ancho de
-                    banda en la ruta crítica (72 KB en prioridad alta) sin que
-                    regular ni medium participen del primer render. Ambos siguen
-                    cargando por @font-face con font-display: swap. */}
+                <link
+                    rel="preload"
+                    href="/fonts/inter-regular.woff2"
+                    as="font"
+                    type="font/woff2"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/inter-medium.woff2"
+                    as="font"
+                    type="font/woff2"
+                    crossOrigin="anonymous"
+                />
                 <link
                     rel="preload"
                     href="/fonts/inter-bold.woff2"
@@ -54,14 +63,11 @@ export default async function LocaleLayout({ children, params }: Props) {
                     <Footer locale={locale as 'es' | 'en'} />
                     <WhatsAppButton location="playa-del-carmen" variant="floating" locale={locale} />
                 </NextIntlClientProvider>
-                {/* lazyOnload, no afterInteractive: gtag pesa 145 KB, el recurso más
-                    grande de la página, y competía por el hilo principal durante la
-                    carga. Google Ads se queda; sólo deja de estorbar al LCP. */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=AW-18008991723"
-                    strategy="lazyOnload"
+                    strategy="afterInteractive"
                 />
-                <Script id="google-ads" strategy="lazyOnload">
+                <Script id="google-ads" strategy="afterInteractive">
                     {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
