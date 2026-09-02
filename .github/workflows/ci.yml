@@ -5,12 +5,12 @@ on:
     branches: [master]
   pull_request:
 
+# Sin secrets a propósito: verificado que `npm run build` sale con exit 0 sin
+# GOOGLE_PLACES_API_KEY — src/lib/google-reviews.ts cae a FALLBACK_DATA. El CI
+# valida el código, no los datos en vivo; las llaves sólo viven en Vercel.
+#
 # Los umbrales de Lighthouse arrancan en modo "warn" (ver lighthouserc.json).
 # Una vez confirmado que el runner alcanza >= 90 de forma estable, subirlos a "error".
-env:
-  GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
-  GOOGLE_PLACE_ID_PDC: ${{ secrets.GOOGLE_PLACE_ID_PDC }}
-  GOOGLE_PLACE_ID_CUN: ${{ secrets.GOOGLE_PLACE_ID_CUN }}
 
 jobs:
   quality:
