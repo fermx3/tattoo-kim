@@ -38,12 +38,18 @@ No server-side runtime needed. Every page is pre-rendered at build time. This gu
 ```
 tattoo-kim/
 ├── .claude/
-│   └── skills/                    # AI coding assistant guidance
-│       ├── nextjs_architecture.md
-│       ├── mdx_content_system.md
-│       ├── i18n_strategy.md
-│       ├── seo_optimization.md
-│       └── performance_budget.md
+│   ├── settings.json              # Permisos: denylist de secretos + allowlist
+│   └── skills/                    # Guías por área (formato SKILL.md)
+│       ├── nextjs-architecture/SKILL.md
+│       ├── mdx-content-system/SKILL.md
+│       ├── i18n-strategy/SKILL.md
+│       ├── seo-optimization/SKILL.md
+│       └── performance-budget/SKILL.md
+├── .github/
+│   └── workflows/ci.yml           # Lint, typecheck, build, Lighthouse
+├── scripts/
+│   ├── validate-frontmatter.mjs   # Corre en npm run build
+│   └── generate-blur-placeholders.mjs
 ├── content/
 │   ├── blog/
 │   │   ├── es/                    # Spanish blog posts (.mdx)
@@ -104,17 +110,27 @@ tattoo-kim/
 │   │   ├── content.ts             # Content fetching (blog, artists)
 │   │   ├── whatsapp.ts            # WhatsApp URL builder
 │   │   └── constants.ts           # Phone numbers, locations, socials
+│   ├── i18n/
+│   │   ├── routing.ts             # Locales + rutas localizadas ES/EN
+│   │   └── navigation.ts          # Link/router locale-aware
+│   ├── i18n.ts                    # Config de request de next-intl
+│   ├── proxy.ts                   # Middleware de next-intl (Next 16)
 │   ├── styles/
 │   │   └── globals.css            # Tailwind directives + CSS variables
 │   └── types/
 │       └── index.ts               # Shared TypeScript types
+├── docs/
+│   ├── MVP_PROGRESS.md
+│   └── PROJECT_KICKOFF_SUMMARY.md
 ├── next.config.ts
-├── tailwind.config.ts
 ├── tsconfig.json
+├── eslint.config.mjs
+├── lighthouserc.json              # Umbrales de Lighthouse CI
+├── vercel.json                    # Cron mensual de reseñas
+├── .nvmrc                         # Node 22.23.1
+├── .env.example
 ├── package.json
-├── CLAUDE.md
-├── MVP_PROGRESS.md
-└── PROJECT_KICKOFF_SUMMARY.md
+└── CLAUDE.md
 ```
 
 ---

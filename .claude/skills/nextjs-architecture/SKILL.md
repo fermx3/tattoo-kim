@@ -1,3 +1,8 @@
+---
+name: nextjs-architecture
+description: Reglas de arquitectura Next.js para Tattoo Kim: SSG obligatorio, Server Components por defecto, el invariante del root layout que mantiene el prerender estático, y la única API route sancionada. Úsala antes de crear o mover páginas y layouts, al añadir "use client", al tocar src/app/, o si el build empieza a marcar rutas como ƒ en vez de ●.
+---
+
 # Skill: Next.js Architecture — Tattoo Kim
 
 ## Purpose

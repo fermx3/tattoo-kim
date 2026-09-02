@@ -10,7 +10,7 @@
 ## Pre-Phase: Arquitectura & Diseño ✅
 
 - [x] **0.1** Definir arquitectura técnica completa (`CLAUDE.md`) — rendering, componentes, dependencias, SEO, performance
-- [x] **0.2** Crear skills de directrices: `nextjs_architecture.md`, `mdx_content_system.md`, `i18n_strategy.md`, `seo_optimization.md`, `performance_budget.md` — todos verificados y leídos
+- [x] **0.2** Crear skills de directrices: `nextjs_architecture.md`, `mdx_content_system.md`, `i18n_strategy.md`, `seo_optimization.md`, `performance_budget.md` — todos verificados y leídos _(migrados después a `.claude/skills/<nombre>/SKILL.md` con frontmatter, para que Claude Code los cargue)_
 - [x] **0.3** Diseño UI de referencia aprobado — Stitch Landing Page (ID: `14928376532203837668`) revisado y validado como fuente de verdad visual
   - Paleta: charcoal `#121212` + accent-teal `#14b8a6`
   - Fuente: Inter (self-hosted en implementación)
