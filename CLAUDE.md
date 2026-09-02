@@ -25,7 +25,11 @@
 └─────────────────────────────────────────────────┘
 ```
 
-**Rendering strategy:** Static Site Generation (SSG) for all pages. No server-side runtime needed. Every page is pre-rendered at build time. This guarantees the best possible Lighthouse scores and zero cold starts.
+**Rendering strategy:** Static Site Generation (SSG) for all pages.
+
+No server-side runtime needed. Every page is pre-rendered at build time. This guarantees the best possible Lighthouse scores and zero cold starts.
+
+> **Invariante:** el root layout `src/app/layout.tsx` no lee estado de request y no emite `<html>`. Ambas cosas viven en `src/app/[locale]/layout.tsx`, que recibe el locale por params. Leer la request desde el root layout vuelve dinámico todo el árbol — verifica con `next build`: las páginas deben salir como `●` (SSG), no `ƒ`.
 
 ---
 

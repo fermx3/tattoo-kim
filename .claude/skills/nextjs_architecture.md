@@ -11,6 +11,7 @@ Govern all architectural decisions for the Tattoo Kim Next.js application. Every
 - **Default: Static Site Generation (SSG).** Every page must be statically generated at build time using `generateStaticParams()`.
 - **No SSR.** Do not use `force-dynamic` or `fetch` with `cache: 'no-store'`. The only permitted `revalidate` is the tagged 30-day cache in `src/lib/google-reviews.ts` (see the sanctioned exception below).
 - **One sanctioned API route only.** `src/app/api/cron/route.ts` (monthly Google Reviews cache refresh, auth-gated by `CRON_SECRET`) is a deliberate exception documented under "Sanctioned Exceptions" in `CLAUDE.md`. Do not remove it, and do not add any other route under `src/app/api/`. There is no other backend.
+- **El root layout (`src/app/layout.tsx`) no debe leer estado de request.** Vive fuera de `[locale]`, así que no recibe params: cualquier `getLocale()`, `headers()` o `cookies()` ahí dentro fuerza render dinámico en **todas** las rutas del sitio. El `<html lang>` lo emite `src/app/[locale]/layout.tsx`, que sí recibe el locale por params. Si el build empieza a marcar rutas como `ƒ` en vez de `●`, revisa esto primero.
 - **No ISR.** Incremental Static Regeneration is not needed — content changes trigger a full rebuild via Git push.
 
 ## Component Model
@@ -71,7 +72,7 @@ src/app/layout.tsx              → <html>, <body>, global CSS
         └── page.tsx / [slug]/page.tsx → Page content
 ```
 
-- The root layout sets the `lang` attribute dynamically based on locale.
+- The locale layout (`src/app/[locale]/layout.tsx`) emits `<html lang>` from its `params`. The root layout is a pass-through and must stay that way — see the rendering rule above.
 - The locale layout wraps all content in the `next-intl` provider.
 - No nested layouts beyond the locale level unless a clear, demonstrated need arises.
 
