@@ -15,8 +15,12 @@ on:
 #   error - performance a 0.85, no 0.90: la mediana es 92-93, pero la primera
 #           corrida de cada set arranca en frío (65) y arrastra la mediana si
 #           cae un segundo run. 0.85 atrapa regresiones sin volverse flaky.
-#   warn  - best-practices (0.79 fijo: cookies de terceros de Google Ads) y
-#           LCP (3.0s en /es). Frentes abiertos; aún no rompen el build.
+#   error - best-practices a 0.75, no 0.90: el score es 0.79 fijo por la cookie
+#           test_cookie de googleads.g.doubleclick.net. Google Ads es un
+#           requisito del negocio, así que 0.90 era inalcanzable por diseño.
+#           0.75 deja pasar ese costo y sigue atrapando cualquier otra
+#           regresión de best-practices.
+#   warn  - LCP (3.0s en /es). Frente abierto; aún no rompe el build.
 #   warn  - TBT: mediana 173ms, pero la corrida en frío llega a 2088ms.
 #           Demasiado ruidoso para un gate duro.
 
