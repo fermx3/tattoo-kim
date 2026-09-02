@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import GoogleStars from '@/components/ui/GoogleStars';
 import type { CombinedGoogleRating } from '@/types';
 
@@ -8,8 +7,6 @@ interface GoogleRatingBadgeProps {
 }
 
 export default function GoogleRatingBadge({ rating, profileUrl }: GoogleRatingBadgeProps) {
-    const t = useTranslations('home');
-
     return (
         <a
             href={profileUrl}

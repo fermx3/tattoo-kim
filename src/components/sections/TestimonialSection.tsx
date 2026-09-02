@@ -1,15 +1,14 @@
 import { useTranslations } from 'next-intl';
 import GoogleStars from '@/components/ui/GoogleStars';
 import GoogleReviewCard from '@/components/ui/GoogleReviewCard';
-import type { GoogleLocationRating, CombinedGoogleRating } from '@/types';
+import type { CombinedGoogleRating } from '@/types';
 
 interface TestimonialSectionProps {
-    reviews: GoogleLocationRating[];
     combined: CombinedGoogleRating;
     profileUrl: string;
 }
 
-export default function TestimonialSection({ reviews, combined, profileUrl }: TestimonialSectionProps) {
+export default function TestimonialSection({ combined, profileUrl }: TestimonialSectionProps) {
     const t = useTranslations('home');
 
     return (

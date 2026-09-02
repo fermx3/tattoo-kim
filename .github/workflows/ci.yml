@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+# Sin secrets a propósito: verificado que `npm run build` sale con exit 0 sin
+# GOOGLE_PLACES_API_KEY — src/lib/google-reviews.ts cae a FALLBACK_DATA. El CI
+# valida el código, no los datos en vivo; las llaves sólo viven en Vercel.
+#
+# Los umbrales de Lighthouse arrancan en modo "warn" (ver lighthouserc.json).
+# Una vez confirmado que el runner alcanza >= 90 de forma estable, subirlos a "error".
+
+jobs:
+  quality:
+    name: Lint, typecheck y build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: TypeScript
+        run: npm run typecheck
+
+      - name: Build (incluye validate-frontmatter)
+        run: npm run build
+
+  lighthouse:
+    name: Lighthouse CI
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          artifactName: lighthouse-results

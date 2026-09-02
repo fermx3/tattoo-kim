@@ -56,7 +56,7 @@ export default async function HomePage({ params }: Props) {
         <main>
             <JsonLd data={jsonLdData} />
             <HeroSection googleRating={combined} profileUrl={profileUrl} />
-            <TestimonialSection reviews={googleData} combined={combined} profileUrl={profileUrl} />
+            <TestimonialSection combined={combined} profileUrl={profileUrl} />
             <GallerySection />
             <ServicesSection />
             <AboutSection googleScore={combined.score} />
