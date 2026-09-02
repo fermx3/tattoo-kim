@@ -1,3 +1,8 @@
+---
+name: performance-budget
+description: Presupuesto de performance de Tattoo Kim con límites duros: Lighthouse >= 90, LCP < 2.5s, CLS < 0.1, bundle JS < 150KB. Úsala antes de añadir dependencias o componentes cliente, al trabajar con imágenes y fuentes, al interpretar resultados de Lighthouse CI, o al ajustar los umbrales de lighthouserc.json.
+---
+
 # Skill: Performance Budget — Tattoo Kim
 
 ## Purpose

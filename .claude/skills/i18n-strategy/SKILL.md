@@ -1,3 +1,8 @@
+---
+name: i18n-strategy
+description: Estrategia bilingüe ES/EN con next-intl para Tattoo Kim: rutas localizadas (/servicios/tatuajes vs /services/tattoos), setRequestLocale, messages/*.json y el fallback de traducciones. Úsala al añadir páginas o rutas nuevas, al tocar textos de UI, al trabajar con el language switcher, o ante cualquier cambio en src/i18n/.
+---
+
 # Skill: Internationalization (i18n) Strategy — Tattoo Kim
 
 ## Purpose

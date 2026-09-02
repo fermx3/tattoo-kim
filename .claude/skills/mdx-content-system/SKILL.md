@@ -1,3 +1,8 @@
+---
+name: mdx-content-system
+description: Sistema de contenido MDX de Tattoo Kim: esquemas de frontmatter para blog y artistas, translationSlug para enlazar versiones ES/EN, y las reglas de validación que corren en el build. Úsala al crear o editar archivos en content/, al añadir un post o un artista, o al tocar src/lib/mdx.ts, content.ts o scripts/validate-frontmatter.mjs.
+---
+
 # Skill: MDX Content System — Tattoo Kim
 
 ## Purpose

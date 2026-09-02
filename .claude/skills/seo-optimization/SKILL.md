@@ -1,3 +1,8 @@
+---
+name: seo-optimization
+description: SEO de Tattoo Kim para consultas locales de tatuajes y piercings en Playa del Carmen y Cancún: generateMetadata, JSON-LD (LocalBusiness, Article, Person, BreadcrumbList), hreflang y canonicals. Úsala al crear páginas, escribir metadata o structured data, redactar contenido de blog, o tocar sitemap.ts y robots.ts.
+---
+
 # Skill: SEO Optimization — Tattoo Kim
 
 ## Purpose
