@@ -9,17 +9,25 @@ on:
 # GOOGLE_PLACES_API_KEY — src/lib/google-reviews.ts cae a FALLBACK_DATA. El CI
 # valida el código, no los datos en vivo; las llaves sólo viven en Vercel.
 #
-# Los umbrales de Lighthouse arrancan en modo "warn" (ver lighthouserc.json).
-# Una vez confirmado que el runner alcanza >= 90 de forma estable, subirlos a "error".
+# Umbrales de Lighthouse (ver lighthouserc.json), calibrados con 3 corridas:
+#   error - accessibility, seo, CLS: varianza cero entre corridas (96/96/96,
+#           92/92/92, 0/0/0), así que un fallo aquí es una regresión real.
+#   error - performance a 0.85, no 0.90: la mediana es 92-93, pero la primera
+#           corrida de cada set arranca en frío (65) y arrastra la mediana si
+#           cae un segundo run. 0.85 atrapa regresiones sin volverse flaky.
+#   warn  - best-practices (0.79 fijo: cookies de terceros de Google Ads) y
+#           LCP (3.0s en /es). Frentes abiertos; aún no rompen el build.
+#   warn  - TBT: mediana 173ms, pero la corrida en frío llega a 2088ms.
+#           Demasiado ruidoso para un gate duro.
 
 jobs:
   quality:
     name: Lint, typecheck y build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -40,9 +48,9 @@ jobs:
     needs: quality
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm

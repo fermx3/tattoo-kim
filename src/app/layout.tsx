@@ -1,7 +1,16 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
-import { getLocale } from 'next-intl/server';
 import '@/styles/globals.css';
+
+// Este layout NO renderiza <html>/<body> a propósito.
+//
+// El root layout vive fuera de [locale], así que no recibe params y no puede
+// conocer el idioma sin leer la request. Cuando lo hacía (await getLocale()),
+// envolvía todas las rutas en render dinámico y el sitio no prerenderizaba ni
+// una página. El <html lang> ahora lo emite src/app/[locale]/layout.tsx, que
+// recibe el locale por params y se mantiene estático.
+//
+// Las rutas que cuelgan directamente de aquí emiten su propio <html>:
+// not-found.tsx. page.tsx sólo hace redirect('/es'), nunca renderiza markup.
 
 export const metadata: Metadata = {
   title: {
@@ -33,49 +42,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-export default async function RootLayout({ children }: Props) {
-  const locale = await getLocale();
-
-  return (
-    <html lang={locale} suppressHydrationWarning>
-      <head>
-        <link
-          rel="preload"
-          href="/fonts/inter-regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/inter-medium.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/inter-bold.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <body className="antialiased bg-[#121212] text-white">
-        {children}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18008991723"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-18008991723');
-          `}
-        </Script>
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: Props) {
+  return children;
 }
