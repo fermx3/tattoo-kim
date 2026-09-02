@@ -386,6 +386,31 @@ WhatsApp is the **only** lead capture mechanism. No forms, no email capture, no 
 
 ---
 
+## Sanctioned Exceptions
+
+These deviate from the "pure SSG, no backend" rule above. They are **deliberate, reviewed, and in production** — do not remove them as architecture violations.
+
+### Google Reviews social proof
+
+| Piece | Path |
+|-------|------|
+| Cron endpoint | `src/app/api/cron/route.ts` |
+| Cron schedule | `vercel.json` — `0 12 1 * *` (monthly) |
+| Data layer | `src/lib/google-reviews.ts` |
+
+**Why it exists:** real Google ratings and reviews are the strongest trust signal for a local studio, and this is the only way to surface them without a CMS or a database — both of which remain Non-Goals. The schedule is monthly *on purpose*: it caps Google Places API calls to stay inside the free tier (see commit `eb99288`).
+
+**Constraints that still apply:**
+
+- This is the **only** API route in the project. Do not add others.
+- The endpoint is authenticated with `CRON_SECRET` (Bearer token) and returns 401 otherwise.
+- Pages never call Google at request time. Fetches are tagged (`google-reviews-{locale}`) with a 30-day `revalidate`; the cron warms and invalidates that cache via `revalidateTag`.
+- `src/lib/google-reviews.ts` degrades to `FALLBACK_DATA` when the API key or the network is unavailable, so builds and renders never fail on it.
+- Every credential comes from `process.env` (`GOOGLE_PLACES_API_KEY`, `GOOGLE_PLACE_ID_PDC`, `GOOGLE_PLACE_ID_CUN`, `CRON_SECRET`). Nothing hardcoded, nothing committed.
+- All other pages remain statically generated. This exception does not license SSR anywhere else.
+
+---
+
 ## Non-Goals (Explicitly Avoided)
 
 These are things we are **not** building. Do not introduce them:
@@ -402,5 +427,5 @@ These are things we are **not** building. Do not introduce them:
 - ❌ **Chat widgets** (no Intercom, Drift, etc.)
 - ❌ **Image carousel libraries** (if a gallery is needed, build a simple CSS grid)
 - ❌ **Dark/light mode toggle** (dark only)
-- ❌ **Server-side API routes** (no `/api/*` endpoints)
-- ❌ **External content APIs** (no fetching from third-party services)
+- ❌ **Additional API routes** (no new `/api/*` endpoints beyond the sanctioned cron — see above)
+- ❌ **Third-party fetches in the render path** (no external calls at request time; sanctioned data is served from cache)

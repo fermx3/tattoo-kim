@@ -9,8 +9,8 @@ Govern all architectural decisions for the Tattoo Kim Next.js application. Every
 ## Rendering Model
 
 - **Default: Static Site Generation (SSG).** Every page must be statically generated at build time using `generateStaticParams()`.
-- **No SSR.** Do not use `force-dynamic`, `revalidate`, or `fetch` with `cache: 'no-store'`.
-- **No API routes.** The `src/app/api/` directory must not exist. There is no backend.
+- **No SSR.** Do not use `force-dynamic` or `fetch` with `cache: 'no-store'`. The only permitted `revalidate` is the tagged 30-day cache in `src/lib/google-reviews.ts` (see the sanctioned exception below).
+- **One sanctioned API route only.** `src/app/api/cron/route.ts` (monthly Google Reviews cache refresh, auth-gated by `CRON_SECRET`) is a deliberate exception documented under "Sanctioned Exceptions" in `CLAUDE.md`. Do not remove it, and do not add any other route under `src/app/api/`. There is no other backend.
 - **No ISR.** Incremental Static Regeneration is not needed — content changes trigger a full rebuild via Git push.
 
 ## Component Model
